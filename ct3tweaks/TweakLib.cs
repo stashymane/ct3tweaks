@@ -19,6 +19,17 @@ namespace ct3tweaks
             }
         }
 
+        public static void ChangeRefreshRate(int rate)
+        {
+            BackupOriginal();
+            String path = Properties.Settings.Default.Directory + "/CT3.exe";
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                stream.Position = 0x7E4B;
+                stream.WriteByte(BitConverter.GetBytes(rate)[0]);
+            }
+        }
+
         public static void BackupOriginal()
         {
             string dir = Properties.Settings.Default.Directory;
