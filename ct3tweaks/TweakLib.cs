@@ -9,6 +9,15 @@ namespace ct3tweaks
 {
     class TweakLib
     {
+        public static void ResetDisplayMode()
+        {
+            String path = Properties.Settings.Default.Directory + "/TAXI3.CFG";
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                stream.Position = 00;
+                stream.WriteByte(0x01);
+            }
+        }
 
         public static void BackupOriginal()
         {
