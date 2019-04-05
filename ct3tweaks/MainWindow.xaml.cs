@@ -1,5 +1,9 @@
 ﻿using ct3tweaks.Pages;
+using Octokit;
+using Semver;
+using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,6 +14,7 @@ namespace ct3tweaks
     /// </summary>
     public partial class MainWindow : Window
     {
+        static GitHubClient client = new GitHubClient(new ProductHeaderValue("ct3tweaks"));
         AdvancedSettings a = new AdvancedSettings();
         BasicSettings b = new BasicSettings();
 
@@ -18,6 +23,7 @@ namespace ct3tweaks
             InitializeComponent();
             SetAdvancedMode(Properties.Settings.Default.AdvancedMode);
             SetDirectory(Properties.Settings.Default.Directory);
+            CheckForUpdates();
         }
 
         private void SetAdvancedMode(bool advanced)
@@ -94,6 +100,25 @@ namespace ct3tweaks
                                           "Error",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Error);
+        }
+
+        public static async void CheckForUpdates()
+        {
+            if (DateTime.Now.Subtract(Properties.Settings.Default.LastUpdateCheck).TotalDays > 7)
+            {
+                try
+                {
+                    Properties.Settings.Default.LastUpdateCheck = DateTime.Now;
+                    Release latest = await client.Repository.Release.GetLatest("stashymane", "ct3tweaks");
+
+                    if (SemVersion.Parse(latest.TagName) > SemVersion.Parse(Assembly.GetExecutingAssembly().GetName().Version.ToString()))
+                        new UpdateNotifier(latest.TagName, latest.Url).ShowDialog();
+                }
+                catch (Exception e)
+                {
+                    Console.Out.WriteLine(e.StackTrace);
+                }
+            }
         }
     }
 }
