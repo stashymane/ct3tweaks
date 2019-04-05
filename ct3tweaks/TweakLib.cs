@@ -26,7 +26,7 @@ namespace ct3tweaks
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
             {
                 stream.Position = 0x7E4B;
-                stream.WriteByte(BitConverter.GetBytes(rate)[0]);
+                stream.Write(BitConverter.GetBytes(rate), 0, 1);
             }
         }
 
