@@ -5,8 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ct3tweaks.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500" Width="500" Height="300">
+             d:DesignHeight="200" d:DesignWidth="500" Width="500" Height="200">
     <Grid>
-            
+        <Grid Margin="0,0,0,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0" TextWrapping="Wrap" Text="Resolution" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="18" Padding="20,0" HorizontalAlignment="Right"/>
+            <TextBlock Margin="0" TextWrapping="Wrap" Text="Framerate" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="18" Padding="20,0" Grid.Row="1" HorizontalAlignment="Right"/>
+            <TextBlock Margin="0" TextWrapping="Wrap" Text="Field of View" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="18" Padding="20,0" Grid.Row="2" HorizontalAlignment="Right"/>
+            <TextBox x:Name="ResolutionPicker" Grid.Column="1" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="1920x1080" FontSize="18"/>
+            <ComboBox x:Name="FrameratePicker" Grid.Column="1" Margin="0" Grid.Row="1" VerticalContentAlignment="Center" SelectedIndex="1" FontSize="18" Padding="0" HorizontalContentAlignment="Center">
+                <ComboBoxItem Content="30" FontSize="18"/>
+                <ComboBoxItem Content="60" FontSize="18"/>
+            </ComboBox>
+            <TextBox x:Name="FOVPicker" Grid.Column="1" Margin="0" Grid.Row="2" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="CheckFovNumber" Text="80" FontSize="18"/>
+        </Grid>
+        <Button x:Name="SaveButton" Content="Save" VerticalAlignment="Bottom" Margin="0" FontSize="22" FontFamily="Segoe UI Semibold" Padding="1,5" Height="40" Click="SaveButton_Click"/>
     </Grid>
 </UserControl>
