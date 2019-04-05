@@ -14,7 +14,7 @@
         </Grid>
         <Grid x:Name="SettingsGrid" Margin="0,80,0,40"/>
         <Grid x:Name="AdvancedToggleGrid" Margin="0" VerticalAlignment="Bottom" Height="40">
-            <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Height="40" Click="SettingsModeToggleButton_Click"/>
+            <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Click="SettingsModeToggleButton_Click" Padding="1,5"/>
         </Grid>
     </Grid>
 </Window>

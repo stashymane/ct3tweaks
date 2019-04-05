@@ -14,9 +14,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="OptimisedResolution" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Right" HorizontalAlignment="Center" FontSize="18" Initialized="OptimisedResolution_Initialized" Text="Resolution"/>
+            <TextBlock x:Name="OptimisedResolution" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Right" HorizontalAlignment="Right" FontSize="18" Initialized="OptimisedResolution_Initialized" Text="Resolution"/>
             <TextBlock x:Name="OptimisedFramerate" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Refresh rate" VerticalAlignment="Center" FontSize="18" Initialized="OptimisedFramerate_Initialized" Grid.Column="1"/>
-            <TextBlock x:Name="OptimisedFov" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Field of View" VerticalAlignment="Center" FontSize="18" Grid.Column="2" Initialized="OptimisedFov_Initialized"/>
+            <TextBlock x:Name="OptimisedFov" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Field of View" VerticalAlignment="Center" FontSize="18" Grid.Column="2" Initialized="OptimisedFov_Initialized"/>
         </Grid>
 
     </Grid>
