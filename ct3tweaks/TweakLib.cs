@@ -18,7 +18,7 @@ namespace ct3tweaks
         public static void ChangeResolution(int w, int h)
         {
             BackupOriginal();
-            float aspect = w / h;
+            float aspect = (float) w / (float) h;
             String path = Properties.Settings.Default.Directory + "/CT3.exe";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
             {
