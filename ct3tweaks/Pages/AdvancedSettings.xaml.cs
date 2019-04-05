@@ -28,6 +28,7 @@ namespace ct3tweaks.Pages
             TweakLib.ChangeResolution(Convert.ToInt32(res[0]), Convert.ToInt32(res[1]));
             TweakLib.ChangeRefreshRate(Convert.ToInt32(FrameratePicker.Text));
             TweakLib.ChangeFOV(Convert.ToSingle(FOVPicker.Text));
+            MainWindow.ShowSuccessDialog();
         }
     }
 }

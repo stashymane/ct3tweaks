@@ -49,6 +49,7 @@ namespace ct3tweaks.Pages
             int[] res = GetOptimalResolution();
             TweakLib.ChangeResolution(res[0], res[1]);
             TweakLib.ChangeFOV((float) GetOptimalFov());
+            MainWindow.ShowSuccessDialog();
         }
 
         private void OptimisedFov_Initialized(object sender, EventArgs e)

@@ -82,5 +82,13 @@ namespace ct3tweaks
                     SetDirectory(dialog.SelectedPath);
             }
         }
+
+        public static void ShowSuccessDialog()
+        {
+            MessageBoxResult result = MessageBox.Show("Successfully saved settings!",
+                                          "Success",
+                                          MessageBoxButton.OK,
+                                          MessageBoxImage.Information);
+        }
     }
 }
