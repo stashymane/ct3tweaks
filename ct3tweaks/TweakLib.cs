@@ -19,6 +19,26 @@ namespace ct3tweaks
             }
         }
 
+        public static void ChangeResolution(int w, int h)
+        {
+            BackupOriginal();
+            float aspect = w / h;
+            String path = Properties.Settings.Default.Directory + "/CT3.exe";
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                stream.Position = 0x7A89;
+                stream.Write(BitConverter.GetBytes(w), 0, 2);
+
+                stream.Position = 0x7A93;
+                stream.Write(BitConverter.GetBytes(h), 0, 2);
+
+                stream.Position = 0x3176A;
+                stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+                stream.Position = 0x6ADC9;
+                stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+            }
+        }
+
         public static void ChangeRefreshRate(int rate)
         {
             BackupOriginal();
