@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,6 +36,17 @@ namespace ct3tweaks
                 stream.Write(BitConverter.GetBytes(aspect), 0, 4);
                 stream.Position = 0x6ADC9;
                 stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+            }
+        }
+
+        public static void ChangeFOV(float fov)
+        {
+            BackupOriginal();
+            String path = Properties.Settings.Default.Directory + "/CT3.exe";
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                stream.Position = 0x6ADCE;
+                stream.Write(BitConverter.GetBytes(fov), 0, 4);
             }
         }
 
