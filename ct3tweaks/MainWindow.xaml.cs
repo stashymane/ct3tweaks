@@ -23,6 +23,21 @@ namespace ct3tweaks
         public MainWindow()
         {
             InitializeComponent();
+            SetAdvancedMode(Properties.Settings.Default.AdvancedMode);
+        }
+
+        private void SetAdvancedMode(bool advanced)
+        {
+            Properties.Settings.Default.AdvancedMode = advanced;
+            if (advanced)
+                this.SettingsModeToggleButton.Content = "Simple mode";
+            else
+                this.SettingsModeToggleButton.Content = "Advanced mode";
+        }
+
+        private void SettingsModeToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetAdvancedMode(!Properties.Settings.Default.AdvancedMode);
         }
     }
 }
