@@ -14,12 +14,14 @@ Features
 Roadmap
 -------
 ### 1.0
-* FPS limit changer
-* Resolution changer
-* Aspect ratio changer
+* ✅ FPS limit changer
+* ✅ Resolution changer
+* ✅ FOV changer
+* ❌ A good user interface
+* ❌ Custom file editor
 ### 2.0
-* Custom music support
-* Skip intro logos (if even possible?)
+* ❌ Custom music support
+* ❌ Skip intro logos (if even possible?)
 
 
 [FairLight's 1.0 executable]: https://www.gamecopyworld.com/games/pc_crazy_taxi_3.shtml
