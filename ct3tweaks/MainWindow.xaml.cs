@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using ct3tweaks.Pages;
+using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ct3tweaks
 {
@@ -8,6 +10,9 @@ namespace ct3tweaks
     /// </summary>
     public partial class MainWindow : Window
     {
+        AdvancedSettings a = new AdvancedSettings();
+        BasicSettings b = new BasicSettings();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -19,10 +24,20 @@ namespace ct3tweaks
         {
             Properties.Settings.Default.AdvancedMode = advanced;
             Properties.Settings.Default.Save();
+            UserControl toLoad;
             if (advanced)
+            {
+                toLoad = a;
                 this.SettingsModeToggleButton.Content = "Simple mode";
+            }
             else
+            {
+                toLoad = b;
                 this.SettingsModeToggleButton.Content = "Advanced mode";
+            }
+            this.Height = BrowseGrid.Height + AdvancedToggleGrid.Height + toLoad.Height + 30;
+            SettingsGrid.Children.Clear();
+            SettingsGrid.Children.Add(toLoad);
         }
 
         private void SettingsModeToggleButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +57,7 @@ namespace ct3tweaks
                 MessageBoxResult result = MessageBox.Show("Game not found in specified directory!\n" + directory,
                                           "Error",
                                           MessageBoxButton.OK,
-                                          MessageBoxImage.Asterisk);
+                                          MessageBoxImage.Error);
                 Properties.Settings.Default.Directory = "";
                 Properties.Settings.Default.Save();
             }
