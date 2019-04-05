@@ -59,14 +59,5 @@ namespace ct3tweaks.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 0.
-        /// </summary>
-        internal static string AdvancedMode {
-            get {
-                return ResourceManager.GetString("AdvancedMode", resourceCulture);
-            }
-        }
     }
 }
