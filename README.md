@@ -10,7 +10,6 @@ Features
 * Increase FPS limit from 30
 * Set the game to any resolution, even those not exposed in CT3's default configurator
 * Change your field of view
-* Change the aspect ratio scaling
 
 Roadmap
 -------
