@@ -1,4 +1,4 @@
-﻿<Window x:Class="ct3tweaks.MainWindow"
+<Window x:Class="ct3tweaks.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="CT3Tweaks" Height="400" Width="500" ResizeMode="CanMinimize">
     <Grid>
-        <Grid Margin="0" VerticalAlignment="Top" Height="80">
+        <Grid x:Name="BrowseGrid" Margin="0" VerticalAlignment="Top" Height="80">
             <Button x:Name="BrowseButton" Content="Browse..." HorizontalAlignment="Left" Margin="0" Width="180" FontSize="24" FontFamily="Segoe UI Semibold" Click="BrowseButton_Click"/>
             <TextBlock HorizontalAlignment="Left" Margin="200,20,0,0" TextWrapping="Wrap" Text="Game location" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="20"/>
-            <TextBlock x:Name="GameLocationString" Margin="200,45,20,0" TextWrapping="Wrap" Text="Not set" VerticalAlignment="Top"/>
-        </Grid>
-        <Grid Margin="0" VerticalAlignment="Bottom" Height="40">
-            <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Height="40" Click="SettingsModeToggleButton_Click"/>
+            <TextBlock x:Name="GameLocationString" Margin="200,45,20,0" Text="Not set" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
         </Grid>
         <Grid x:Name="SettingsGrid" Margin="0,80,0,40"/>
+        <Grid x:Name="AdvancedToggleGrid" Margin="0" VerticalAlignment="Bottom" Height="40">
+            <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Height="40" Click="SettingsModeToggleButton_Click"/>
+        </Grid>
     </Grid>
 </Window>
