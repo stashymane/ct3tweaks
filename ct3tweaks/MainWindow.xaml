@@ -8,9 +8,9 @@
         Title="CT3Tweaks" Height="400" Width="500" ResizeMode="CanMinimize">
     <Grid>
         <Grid Margin="0" VerticalAlignment="Top" Height="80">
-            <Button x:Name="BrowseButton" Content="Browse..." HorizontalAlignment="Left" Margin="0" Width="180" FontSize="24" FontFamily="Segoe UI Semibold"/>
+            <Button x:Name="BrowseButton" Content="Browse..." HorizontalAlignment="Left" Margin="0" Width="180" FontSize="24" FontFamily="Segoe UI Semibold" Click="BrowseButton_Click"/>
             <TextBlock HorizontalAlignment="Left" Margin="200,20,0,0" TextWrapping="Wrap" Text="Game location" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="20"/>
-            <TextBlock x:Name="GameLocationString" Margin="200,45,20,0" TextWrapping="Wrap" Text="Not specified" VerticalAlignment="Top"/>
+            <TextBlock x:Name="GameLocationString" Margin="200,45,20,0" TextWrapping="Wrap" Text="Not set" VerticalAlignment="Top"/>
         </Grid>
         <Grid Margin="0" VerticalAlignment="Bottom" Height="40">
             <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Height="40" Click="SettingsModeToggleButton_Click"/>
