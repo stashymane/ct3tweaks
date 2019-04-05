@@ -44,12 +44,19 @@ namespace ct3tweaks.Pages
 
         private void OptimiseButton_Click(object sender, RoutedEventArgs e)
         {
-            TweakLib.ResetDisplayMode();
-            TweakLib.ChangeRefreshRate(GetOptimalRefreshRate());
-            int[] res = GetOptimalResolution();
-            TweakLib.ChangeResolution(res[0], res[1]);
-            TweakLib.ChangeFOV((float) GetOptimalFov());
-            MainWindow.ShowSuccessDialog();
+            if (TweakLib.FilesExist())
+            {
+                TweakLib.ResetDisplayMode();
+                TweakLib.ChangeRefreshRate(GetOptimalRefreshRate());
+                int[] res = GetOptimalResolution();
+                TweakLib.ChangeResolution(res[0], res[1]);
+                TweakLib.ChangeFOV((float)GetOptimalFov());
+                MainWindow.ShowSuccessDialog();
+            }
+            else
+            {
+                MainWindow.ShowGameNotFoundError();
+            }
         }
 
         private void OptimisedFov_Initialized(object sender, EventArgs e)

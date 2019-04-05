@@ -24,11 +24,18 @@ namespace ct3tweaks.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            string[] res = ResolutionPicker.Text.Split('x');
-            TweakLib.ChangeResolution(Convert.ToInt32(res[0]), Convert.ToInt32(res[1]));
-            TweakLib.ChangeRefreshRate(Convert.ToInt32(FrameratePicker.Text));
-            TweakLib.ChangeFOV(Convert.ToSingle(FOVPicker.Text));
-            MainWindow.ShowSuccessDialog();
+            if (TweakLib.FilesExist())
+            {
+                string[] res = ResolutionPicker.Text.Split('x');
+                TweakLib.ChangeResolution(Convert.ToInt32(res[0]), Convert.ToInt32(res[1]));
+                TweakLib.ChangeRefreshRate(Convert.ToInt32(FrameratePicker.Text));
+                TweakLib.ChangeFOV(Convert.ToSingle(FOVPicker.Text));
+                MainWindow.ShowSuccessDialog();
+            }
+            else
+            {
+                MainWindow.ShowGameNotFoundError();
+            }
         }
     }
 }

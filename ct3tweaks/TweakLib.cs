@@ -5,14 +5,21 @@ namespace ct3tweaks
 {
     class TweakLib
     {
+        public static bool FilesExist()
+        {
+            String path = Properties.Settings.Default.Directory;
+            return File.Exists(path + "/CT3.exe");
+        }
+
         public static void ResetDisplayMode()
         {
             String path = Properties.Settings.Default.Directory + "/TAXI3.CFG";
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
-            {
-                stream.Position = 00;
-                stream.WriteByte(0x01);
-            }
+            if (File.Exists(path))
+                using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    stream.Position = 00;
+                    stream.WriteByte(0x01);
+                }
         }
 
         public static void ChangeResolution(int w, int h)

@@ -54,10 +54,7 @@ namespace ct3tweaks
             }
             else if (!directory.Equals(""))
             {
-                MessageBoxResult result = MessageBox.Show("Game not found in specified directory!\n" + directory,
-                                          "Error",
-                                          MessageBoxButton.OK,
-                                          MessageBoxImage.Error);
+                ShowGameNotFoundError();
                 Properties.Settings.Default.Directory = "";
                 Properties.Settings.Default.Save();
             }
@@ -89,6 +86,14 @@ namespace ct3tweaks
                                           "Success",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Information);
+        }
+
+        public static void ShowGameNotFoundError()
+        {
+            MessageBoxResult result = MessageBox.Show("Game not found in specified directory!",
+                                          "Error",
+                                          MessageBoxButton.OK,
+                                          MessageBoxImage.Error);
         }
     }
 }
