@@ -22,7 +22,7 @@ namespace ct3tweaks
         {
             InitializeComponent();
             SetAdvancedMode(Properties.Settings.Default.AdvancedMode);
-            SetDirectory(Properties.Settings.Default.Directory);
+            UpdateDirectory();
             CheckForUpdates();
         }
 
@@ -49,6 +49,26 @@ namespace ct3tweaks
         private void SettingsModeToggleButton_Click(object sender, RoutedEventArgs e)
         {
             SetAdvancedMode(!Properties.Settings.Default.AdvancedMode);
+        }
+
+        private void UpdateDirectory()
+        {
+            if (Properties.Settings.Default.Directory.Equals(""))
+            {
+                string[] common = new string[4];
+                common[0] = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                common[1] = Environment.SpecialFolder.ProgramFiles + "/Crazy Taxi 3";
+                common[2] = "C:/Games/Crazy Taxi 3";
+                common[3] = "D:/Games/Crazy Taxi 3";
+                foreach (string path in common)
+                {
+                    string exepath = path + "/CT3.exe";
+                    if (File.Exists(exepath))
+                        SetDirectory(path);
+                }
+            }
+            else
+                SetDirectory(Properties.Settings.Default.Directory);
         }
 
         private void SetDirectory(string directory)
