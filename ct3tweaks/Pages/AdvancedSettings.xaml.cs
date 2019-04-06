@@ -28,14 +28,26 @@ namespace ct3tweaks.Pages
             {
                 string[] res = ResolutionPicker.Text.Split('x');
                 TweakLib.ChangeResolution(Convert.ToInt32(res[0]), Convert.ToInt32(res[1]));
-                TweakLib.ChangeRefreshRate(Convert.ToInt32(FrameratePicker.Text));
-                TweakLib.ChangeFOV(Convert.ToSingle(FOVPicker.Text));
+                TweakLib.ChangeRefreshRate((int) FramerateSlider.Value);
+                TweakLib.ChangeFOV(Convert.ToSingle(FOVPickerSlider.Value));
                 MainWindow.ShowSuccessDialog();
             }
             else
             {
                 MainWindow.ShowGameNotFoundError();
             }
+        }
+
+        private void FOVPickerSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (FovLabel != null)
+                FovLabel.Content = Math.Round(FOVPickerSlider.Value, 2);
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (FramerateLabel != null)
+                FramerateLabel.Content = FramerateSlider.Value;
         }
     }
 }
