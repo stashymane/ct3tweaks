@@ -156,14 +156,21 @@ a {
 		font-size: 1.9em;
 		text-align: center;
 		padding: 0;
+		margin: 0 -40px;
 		
 		li {
+			display: inline-block;
+			width: 100%;
 			padding: 10px;
-			margin: 10px -40px;
+			margin: 10px 0;
 			background-color: $accent-dark-color;
-			font-style: italic;
 			font-family: 'Staatliches', cursive;
 			color: $text-highlight-color;
+			transform: skewY(5deg);
+			
+			span {
+				display: inline-block;
+			}
 		}
 	}
 }
