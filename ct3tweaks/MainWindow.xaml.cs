@@ -41,7 +41,7 @@ namespace ct3tweaks
                 toLoad = b;
                 this.SettingsModeToggleButton.Content = "Advanced mode";
             }
-            this.Height = BrowseGrid.Height + AdvancedToggleGrid.Height + toLoad.Height + 30;
+            this.Height = BrowseGrid.Height + AdvancedToggleGrid.Height + toLoad.Height + 40;
             SettingsGrid.Children.Clear();
             SettingsGrid.Children.Add(toLoad);
         }
