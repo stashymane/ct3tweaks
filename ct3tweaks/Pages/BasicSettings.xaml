@@ -1,14 +1,14 @@
-﻿<UserControl x:Class="ct3tweaks.Pages.BasicSettings"
+<UserControl x:Class="ct3tweaks.Pages.BasicSettings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ct3tweaks.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="500" Width="500" Height="200">
+             d:DesignHeight="200" d:DesignWidth="500" Height="200">
     <Grid>
-        <Button x:Name="OptimiseButton" Content="Optimise for your computer" Width="500" Margin="0,0,0,40" FontSize="28" FontFamily="Segoe UI Semibold" Click="OptimiseButton_Click"/>
-        <Grid HorizontalAlignment="Left" Height="40" Margin="0,160,0,0" VerticalAlignment="Bottom" Width="500">
+        <Button x:Name="OptimiseButton" Content="Optimise for your computer" Margin="0,0,0,40" FontSize="28" FontFamily="Segoe UI Semibold" Click="OptimiseButton_Click"/>
+        <Grid Height="40" Margin="0,160,0,0" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
