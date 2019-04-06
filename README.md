@@ -4,6 +4,11 @@ A Crazy Taxi 3 executable tweaker.
 
 Currently only supports [FairLight's 1.0 executable].
 
+Requirements
+--------
+* Windows Vista or later
+* .NET Framework v4.5
+
 Features
 --------
 * Automatically optimize the game executable for your system
