@@ -30,4 +30,4 @@ Roadmap
 * ❌ Full auto updater (with download)
 
 
-[FairLight's 1.0 executable]: https://www.gamecopyworld.com/games/pc_crazy_taxi_3.shtml
+[FairLight's 1.0 executable]: https://www.gamecopyworld.com/games/pc_crazy_taxi_3.shtml#Crazy%20Taxi%203%20v1.0%20[ENGLISH]%20Fixed%20EXE
