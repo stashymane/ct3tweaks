@@ -1,10 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Preparation') {
+    stage('Restore Packages') {
       steps {
-        sh '''nuget update -self
-nuget restore'''
+        sh 'nuget restore'
       }
     }
     stage('Build') {
