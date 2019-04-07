@@ -9,6 +9,12 @@ $accent-darker-color: darken($accent-color, 20%);
 $accent-light-color: lighten($accent-color, 10%);
 $accent-lighter-color: lighten($accent-color, 20%);
 
+$accent-alt-color: #d500f9;
+$accent-alt-dark-color: darken($accent-alt-color, 10%);
+$accent-alt-darker-color: darken($accent-alt-color, 20%);
+$accent-alt-light-color: lighten($accent-alt-color, 10%);
+$accent-alt-lighter-color: lighten($accent-alt-color, 20%);
+
 $transition-speed: .1s;
 $transition-function: ease-in-out;
 
@@ -66,13 +72,13 @@ a {
 	a {
 		font-family: 'Monoton', cursive;
 		font-weight: 400;
-		text-shadow: 0px 0px 2px #fff, 0px 0px 4px #fff, 0px 0px 5px $accent-color, 0px 0px 20px $accent-color, 0px 0px 40px $accent-color;
+		text-shadow: 0px 0px 2px #fff, 0px 0px 4px #fff, 0px 0px 5px $accent-color, 0px 0px 20px $accent-color, 0px -10px 40px $accent-color, 0px 10px 40px $accent-alt-color, 0px 0px 60px transparent;
 		color: $text-highlight-color;
 		text-decoration: none;
 		transition: text-shadow .2s $transition-function;
 		
 		&:hover {
-			text-shadow: 0px 0px 4px #fff, 0px 0px 8px #fff, 0px 0px 5px $accent-color, 0px 0px 20px $accent-color, 0px 0px 40px $accent-color, 0px 0px 60px $accent-color;
+			text-shadow: 0px 0px 4px #fff, 0px 0px 8px #fff, 0px 0px 5px $accent-color, 0px 0px 20px $accent-color, 0px -10px 40px $accent-color, 0px 10px 40px $accent-alt-color, 0px 0px 60px $accent-alt-color;
 		}
 	}
 }
@@ -100,7 +106,7 @@ a {
 	color: $text-highlight-color;
 	text-decoration: none;
 	transition: background-color $transition-speed $transition-function, color $transition-speed $transition-function, border-color $transition-speed $transition-function, box-shadow $transition-speed $transition-function, bottom $transition-speed $transition-function;
-	box-shadow: 0px 0px 20px transparent, 0px 0.15em 0px $accent-darker-color;
+	box-shadow: 0px 0px 15px transparent, 0px 0.15em 0px $accent-darker-color;
 	margin-bottom: 0.15em;
 	position: relative;
 	bottom: 0;
@@ -117,7 +123,7 @@ a {
 	&:active {
 		background-color: $accent-darker-color;
 		border-color: $accent-dark-color;
-		box-shadow: 0px 0px 20px transparent, 0px 0px 0px $accent-darker-color;
+		box-shadow: 0px 0px 15px transparent, 0px 0px 0px $accent-darker-color, inset 0px 20px 20px -20px rgba(0,0,0,0.5);
 		bottom: -0.15em;
 	}
 	
@@ -164,9 +170,11 @@ a {
 			padding: 10px;
 			margin: 10px 0;
 			background-color: $accent-dark-color;
+			background-image: linear-gradient($accent-color, $accent-darker-color);
 			font-family: 'Staatliches', cursive;
 			color: $text-highlight-color;
 			transform: skewY(5deg);
+			text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 			
 			span {
 				display: inline-block;
