@@ -1,6 +1,7 @@
 CT3Tweaks
 =========
-A Crazy Taxi 3 executable tweaker.
+A Crazy Taxi 3 executable tweaker.  
+Check out some [screenshots].
 
 Currently only supports [FairLight's 1.0 executable].
 
@@ -31,3 +32,4 @@ Roadmap
 
 
 [FairLight's 1.0 executable]: https://www.gamecopyworld.com/games/pc_crazy_taxi_3.shtml#Crazy%20Taxi%203%20v1.0%20[ENGLISH]%20Fixed%20EXE
+[Screenshots]: https://imgur.com/a/qU5CFTW
