@@ -1,6 +1,7 @@
 ﻿using Octokit;
 using Semver;
 using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace ct3tweaks
@@ -11,19 +12,20 @@ namespace ct3tweaks
 
         public static async void Check()
         {
-            if (DateTime.Now.Subtract(Properties.Settings.Default.LastUpdateCheck).TotalDays > 7)
+            if (DateTime.Now > Properties.Settings.Default.NextCheck)
             {
                 try
                 {
-                    Properties.Settings.Default.LastUpdateCheck = DateTime.Now;
-                    Release latest = await client.Repository.Release.GetLatest("stashymane", "ct3tweaks");
-
-                    if (SemVersion.Parse(latest.TagName) > SemVersion.Parse(Assembly.GetExecutingAssembly().GetName().Version.ToString()))
-                        new UpdateNotifier(latest.TagName, latest.Url).ShowDialog();
+                    Properties.Settings.Default.NextCheck = DateTime.Now;
+                    Release release = (await client.Repository.Release.GetAll("stashymane", "ct3tweaks"))[0];
+                    String latest = release.TagName.Replace("v", "");
+                    String current = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+                    if (SemVersion.Parse(latest) > SemVersion.Parse(current))
+                        new UpdateNotifier(latest, release.HtmlUrl).ShowDialog();
                 }
                 catch (Exception e)
                 {
-                    Console.Out.WriteLine(e.StackTrace);
+                    Console.Out.WriteLine("Failed to check for updates: " + e.Message);
                 }
             }
         }
