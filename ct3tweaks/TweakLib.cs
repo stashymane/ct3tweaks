@@ -1,74 +1,90 @@
-﻿using System;
+﻿using ct3tweaks.Objects;
+using System;
 using System.IO;
 
 namespace ct3tweaks
 {
-    class TweakLib
+    static class TweakLib
     {
-        public static bool FilesExist()
-        {
-            String path = Properties.Settings.Default.Directory;
-            return File.Exists(path + "/CT3.exe");
-        }
+        static readonly Int32[] resBytes = new Int32[] { 0x7A89, 0x7A93 };
+        static readonly Int32[] aspectBytes = new Int32[] { 0x3176A, 0x6ADC9 };
+        static readonly Int32 fovByte = 0x6ADCE;
+        static readonly Int32 fpsByte = 0x7E4B;
 
-        public static void ResetDisplayMode()
+        public static void ResetDisplayMode(string configPath)
         {
-            String path = Properties.Settings.Default.Directory + "/TAXI3.CFG";
-            if (File.Exists(path))
-                using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
-                {
-                    stream.Position = 00;
-                    stream.WriteByte(0x01);
-                }
-        }
-
-        public static void ChangeResolution(int w, int h)
-        {
-            BackupOriginal();
-            float aspect = (float) w / (float) h;
-            String path = Properties.Settings.Default.Directory + "/CT3.exe";
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            using (var stream = new FileStream(configPath, FileMode.Open, FileAccess.ReadWrite))
             {
-                stream.Position = 0x7A89;
-                stream.Write(BitConverter.GetBytes(w), 0, 2);
-
-                stream.Position = 0x7A93;
-                stream.Write(BitConverter.GetBytes(h), 0, 2);
-
-                stream.Position = 0x3176A;
-                stream.Write(BitConverter.GetBytes(aspect), 0, 4);
-                stream.Position = 0x6ADC9;
-                stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+                stream.Position = 00;
+                stream.WriteByte(0x01);
             }
         }
 
-        public static void ChangeFOV(float fov)
+        public static void ChangeResolution(string gamePath, Resolution res)
         {
-            BackupOriginal();
-            String path = Properties.Settings.Default.Directory + "/CT3.exe";
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            BackupOriginal(gamePath);
+
+            int w = res.w;
+            int h = res.h;
+
+            float aspect = (float) w / h;
+            using (var stream = new FileStream(gamePath, FileMode.Open, FileAccess.ReadWrite))
             {
-                stream.Position = 0x6ADCE;
+                stream.Position = resBytes[0];
+                stream.Write(BitConverter.GetBytes(w), 0, 2);
+
+                stream.Position = resBytes[1];
+                stream.Write(BitConverter.GetBytes(h), 0, 2);
+
+                foreach (Int32 b in aspectBytes)
+                {
+                    stream.Position = b;
+                    stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+                }
+            }
+        }
+
+        public static void ChangeFOV(string gamePath, float fov)
+        {
+            BackupOriginal(gamePath);
+            using (var stream = new FileStream(gamePath, FileMode.Open, FileAccess.ReadWrite))
+            {
+                stream.Position = fovByte;
                 stream.Write(BitConverter.GetBytes(fov), 0, 4);
             }
         }
 
-        public static void ChangeRefreshRate(int rate)
+        public static void ChangeFramerate(string gamePath, int fps)
         {
-            BackupOriginal();
-            String path = Properties.Settings.Default.Directory + "/CT3.exe";
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            BackupOriginal(gamePath);
+            using (var stream = new FileStream(gamePath, FileMode.Open, FileAccess.ReadWrite))
             {
-                stream.Position = 0x7E4B;
-                stream.Write(BitConverter.GetBytes(rate), 0, 1);
+                stream.Position = fpsByte;
+                stream.Write(BitConverter.GetBytes(fps), 0, 1);
             }
         }
 
-        public static void BackupOriginal()
+        public static void BackupOriginal(string gamePath)
         {
-            string dir = Properties.Settings.Default.Directory;
-            if (!File.Exists(dir + "/CT3.original.exe"))
-                File.Copy(dir + "/CT3.exe", dir + "/CT3.original.exe");
+            BackupOriginal(gamePath, gamePath.Replace(".exe", ".original.exe"));
+        }
+
+        public static void BackupOriginal(string gamePath, string backupPath)
+        {
+            if (!File.Exists(backupPath))
+                File.Copy(gamePath, backupPath);
+        }
+
+        public static void RestoreBackup(string gamePath)
+        {
+            RestoreBackup(gamePath, gamePath.Replace(".exe", ".original.exe"));
+        }
+
+        public static void RestoreBackup(string gamePath, string backupPath)
+        {
+            if (File.Exists(gamePath))
+                File.Delete(gamePath);
+            File.Copy(backupPath, gamePath);
         }
     }
 }
