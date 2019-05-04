@@ -5,16 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ct3tweaks"
         mc:Ignorable="d"
-        Title="CT3Tweaks" Height="400" Width="500" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="CT3Tweaks" Height="350" Width="500" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid x:Name="BrowseGrid" Margin="0" VerticalAlignment="Top" Height="80">
-            <Button x:Name="BrowseButton" Content="Browse..." HorizontalAlignment="Left" Margin="0" Width="180" FontSize="24" FontFamily="Segoe UI Semibold" Click="BrowseButton_Click"/>
-            <TextBlock HorizontalAlignment="Left" Margin="200,20,0,0" TextWrapping="Wrap" Text="Game location" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="20"/>
-            <TextBlock x:Name="GameLocationString" Margin="200,45,20,0" Text="Not set" VerticalAlignment="Top" TextTrimming="CharacterEllipsis"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="BrowseGrid" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="120"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="BrowseButton" Content="Browse..." Margin="0" FontSize="24" FontFamily="Segoe UI Semibold" Click="BrowseButton_Click" Grid.RowSpan="2"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,0,0,0" TextWrapping="Wrap" Text="Game location" VerticalAlignment="Bottom" FontFamily="Segoe UI Semibold" FontSize="20" Grid.Column="1"/>
+            <TextBlock x:Name="DirectoryString" Margin="20,0,0,0" Text="Not set" VerticalAlignment="Top" TextTrimming="CharacterEllipsis" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"/>
         </Grid>
-        <Grid x:Name="SettingsGrid" Margin="0,80,0,30"/>
-        <Grid x:Name="AdvancedToggleGrid" Margin="0" VerticalAlignment="Bottom" Height="30">
-            <Button x:Name="SettingsModeToggleButton" Content="Advanced mode" Margin="0" Click="SettingsModeToggleButton_Click" Padding="1,5"/>
+        <Grid Row="2" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="RestoreButton" Content="Restore backup" Grid.Column="0" Padding="8,1" Click="RestoreButton_Click"/>
+            <Button x:Name="DefaultsButton" Content="Reset to default" Margin="0" Grid.Column="1" Padding="8,1" Click="DefaultsButton_Click"/>
+        </Grid>
+        <Grid Margin="0" Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Resolution" VerticalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Field of View" VerticalAlignment="Center" Grid.Row="1"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Framerate" VerticalAlignment="Center" Grid.Row="2"/>
+            <Slider x:Name="ResolutionSlider" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="7" IsSnapToTickEnabled="True" ValueChanged="ResolutionSlider_ValueChanged"/>
+            <Slider x:Name="FovSlider" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" ValueChanged="FovSlider_ValueChanged" Minimum="10" Maximum="180" TickFrequency="5" Value="80" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Grid.Row="1"/>
+            <Slider x:Name="FramerateSlider" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" ValueChanged="FramerateSlider_ValueChanged" Minimum="30" Maximum="60" TickPlacement="BottomRight" TickFrequency="30" Value="30" IsSnapToTickEnabled="True" Grid.Row="2"/>
+            <TextBox x:Name="ResolutionInput" Grid.Column="2" Margin="0" Text="Resolution" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="FOVInput" Grid.Column="2" Text="FOV" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20" Grid.Row="1"/>
+            <TextBox x:Name="FramerateInput" Grid.Column="2" Text="FPS" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20" Grid.Row="2"/>
+        </Grid>
+        <Grid Margin="0" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ApplyButton" Content="Apply settings" FontSize="28" FontFamily="Segoe UI Semibold" Click="ApplyButton_Click"/>
+            <Button x:Name="ApplyAndLaunchButton" Content="Apply &amp; Launch" FontSize="28" FontFamily="Segoe UI Semibold" Grid.Column="1" Click="ApplyAndLaunchButton_Click"/>
         </Grid>
     </Grid>
 </Window>

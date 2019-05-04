@@ -1,11 +1,8 @@
-using ct3tweaks.Pages;
-using Octokit;
-using Semver;
+﻿using ct3tweaks.Objects;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ct3tweaks
 {
@@ -14,43 +11,54 @@ namespace ct3tweaks
     /// </summary>
     public partial class MainWindow : Window
     {
-        AdvancedSettings a = new AdvancedSettings();
-        BasicSettings b = new BasicSettings();
+        private List<Resolution> resolutions = new List<Resolution>();
 
         public MainWindow()
         {
             InitializeComponent();
-            SetAdvancedMode(Properties.Settings.Default.AdvancedMode);
-            UpdateDirectory();
+            ProfileManager.ProfileChange += ProfileManager_ProfileChange;
+            ProfileManager.DirectoryChange += ProfileManager_DirectoryChange;
+            LoadDirectory();
+            LoadResolutions();
+            LoadProfile();
             Updater.Check();
         }
 
-        private void SetAdvancedMode(bool advanced)
+        private void ProfileManager_DirectoryChange(string past, string present)
         {
-            Properties.Settings.Default.AdvancedMode = advanced;
-            Properties.Settings.Default.Save();
-            UserControl toLoad;
-            if (advanced)
-            {
-                toLoad = a;
-                this.SettingsModeToggleButton.Content = "Simple mode";
-            }
+            if (present.Equals(""))
+                DirectoryString.Text = "Not set";
             else
-            {
-                toLoad = b;
-                this.SettingsModeToggleButton.Content = "Advanced mode";
-            }
-            this.Height = BrowseGrid.Height + AdvancedToggleGrid.Height + toLoad.Height + 40;
-            SettingsGrid.Children.Clear();
-            SettingsGrid.Children.Add(toLoad);
+                DirectoryString.Text = present;
         }
 
-        private void SettingsModeToggleButton_Click(object sender, RoutedEventArgs e)
+        private void ProfileManager_ProfileChange(Profile past, Profile present)
         {
-            SetAdvancedMode(!Properties.Settings.Default.AdvancedMode);
+            present.ResolutionChange += Present_ResolutionChange;
+            present.FramerateChange += Present_FramerateChange;
+            present.FOVChange += Present_FOVChange;
         }
 
-        private void UpdateDirectory()
+        private void Present_FOVChange(float past, float present)
+        {
+            FovSlider.Value = present;
+            FOVInput.Text = "" + present;
+        }
+
+        private void Present_FramerateChange(int past, int present)
+        {
+            FramerateSlider.Value = present;
+            FramerateInput.Text = "" + present;
+        }
+
+        private void Present_ResolutionChange(Resolution past, Resolution present)
+        {
+            if (resolutions.Contains(present))
+                ResolutionSlider.Value = resolutions.IndexOf(present);
+            ResolutionInput.Text = present.w + "x" + present.h;
+        }
+
+        private void LoadDirectory()
         {
             if (Properties.Settings.Default.Directory.Equals(""))
             {
@@ -61,64 +69,130 @@ namespace ct3tweaks
                 common[3] = "D:/Games/Crazy Taxi 3";
                 foreach (string path in common)
                 {
-                    string exepath = path + "/CT3.exe";
-                    if (File.Exists(exepath))
-                        SetDirectory(path);
+                    try
+                    {
+                        ProfileManager.Directory = path;
+                        break;
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        continue;
+                    }
                 }
             }
             else
-                SetDirectory(Properties.Settings.Default.Directory);
-        }
-
-        private void SetDirectory(string directory)
-        {
-            if (File.Exists(directory + "/CT3.exe"))
             {
-                Properties.Settings.Default.Directory = directory;
-                Properties.Settings.Default.Save();
+                try
+                {
+                    ProfileManager.Directory = Properties.Settings.Default.Directory;
+                }
+                catch (FileNotFoundException)
+                {
+                    Properties.Settings.Default.Directory = "";
+                    Properties.Settings.Default.Save();
+                    ProfileManager.Directory = "";
+                }
             }
-            else if (!directory.Equals(""))
-            {
-                ShowGameNotFoundError();
-                Properties.Settings.Default.Directory = "";
-                Properties.Settings.Default.Save();
-            }
-            UpdateDirectoryString();
         }
 
-        private void UpdateDirectoryString()
+        private void LoadResolutions()
         {
-            string location = Properties.Settings.Default.Directory;
-            if (!location.Equals(""))
-                this.GameLocationString.Text = location;
-            else
-                this.GameLocationString.Text = "Not set";
+            resolutions.Add(new Resolution(1280, 720));
+            resolutions.Add(new Resolution(1920, 1080));
+            ResolutionSlider.Maximum = resolutions.Count - 1;
         }
 
-        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        private void LoadProfile()
+        {
+            ProfileManager.CurrentProfile = new Profile(new Resolution(1920, 1080), 60, 90);
+            Present_ResolutionChange(null, ProfileManager.CurrentProfile.Resolution);
+            Present_FramerateChange(0, ProfileManager.CurrentProfile.Framerate);
+            Present_FOVChange(0, ProfileManager.CurrentProfile.FOV);
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs r)
         {
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 dialog.ShowDialog();
                 if (!dialog.SelectedPath.Equals(""))
-                    SetDirectory(dialog.SelectedPath);
+                {
+                    try
+                    {
+                        ProfileManager.Directory = dialog.SelectedPath;
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        MessageBox.Show(e.Message, "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
 
-        public static void ShowSuccessDialog()
+        private void ApplyAndLaunchButton_Click(object sender, RoutedEventArgs r)
         {
-            MessageBoxResult result = MessageBox.Show("Successfully saved settings!",
-                                          "Success",
-                                          MessageBoxButton.OK,
-                                          MessageBoxImage.Information);
+            try
+            {
+                ProfileManager.Apply();
+                System.Diagnostics.Process.Start(ProfileManager.ExecutablePath);
+            }
+            catch (FileNotFoundException e)
+            {
+                FailedToApply(e);
+            }
         }
 
-        public static void ShowGameNotFoundError()
+        private void ApplyButton_Click(object sender, RoutedEventArgs r)
         {
-            MessageBoxResult result = MessageBox.Show("Game not found in specified directory!",
-                                          "Error",
-                                          MessageBoxButton.OK,
-                                          MessageBoxImage.Error);
+            try
+            {
+                ProfileManager.Apply();
+                MessageBox.Show("Profile successfully applied!");
+            }
+            catch (FileNotFoundException e)
+            {
+                FailedToApply(e);
+            }
+        }
+
+        private void FailedToApply(FileNotFoundException e)
+        {
+            MessageBox.Show("Failed to apply profile:\n" + e.Message, "Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void FramerateSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (FramerateSlider.IsMouseCaptured || FramerateSlider.IsFocused)
+                ProfileManager.CurrentProfile.Framerate = (int) FramerateSlider.Value;
+        }
+
+        private void ResolutionSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (ResolutionSlider.IsMouseCaptured || ResolutionSlider.IsFocused)
+                ProfileManager.CurrentProfile.Resolution = resolutions[(int) ResolutionSlider.Value];
+        }
+
+        private void FovSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (FovSlider.IsMouseCaptured || FovSlider.IsFocused)
+                ProfileManager.CurrentProfile.FOV = (float) FovSlider.Value;
+        }
+
+        private void DefaultsButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                TweakLib.RestoreBackup(ProfileManager.ExecutablePath, ProfileManager.BackupExecutablePath);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No backup available");
+            }
         }
     }
 }
