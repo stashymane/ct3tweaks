@@ -23,8 +23,9 @@ Roadmap
 * ✅ FPS limit changer
 * ✅ Resolution changer
 * ✅ FOV changer
+* ❌ Profile manager
 * ❌ A good user interface
-* ❌ Custom file editor
+* ❌ Dynamic executable patching (aka support for other exes)
 ### 2.0
 * ❌ Custom music support
 * ❌ Skip intro logos (if even possible?)
