@@ -258,8 +258,6 @@ h2 {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	filter: blur(20px);
-	animation: fadein 2s ease forwards 1s;
 	
 	div {
 		position: absolute;
@@ -295,9 +293,4 @@ h2 {
 	9%  { opacity: 1; }
 	13% { opacity: 0; }
 	100% { opacity: 0; }
-}
-
-@keyframes fadein {
-	0% { filter: blur(20px); }
-	100% { filter: blur(0); }
 }
