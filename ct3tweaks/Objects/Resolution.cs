@@ -16,5 +16,10 @@ namespace ct3tweaks.Objects
         {
             return this.w == other.w && this.h == other.h;
         }
+
+        override public string ToString()
+        {
+            return this.w + "x" + this.h;
+        }
     }
 }

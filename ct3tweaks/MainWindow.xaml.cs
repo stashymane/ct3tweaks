@@ -99,9 +99,8 @@ namespace ct3tweaks
             ResolutionPicker.Items.Clear();
             foreach (Resolution r in resolutions)
             {
-                string res = r.w + "x" + r.h;
-                if (!ResolutionPicker.Items.Contains(res))
-                    ResolutionPicker.Items.Add(res);
+                if (!ResolutionPicker.Items.Contains(r))
+                    ResolutionPicker.Items.Add(r);
             }
         }
 
