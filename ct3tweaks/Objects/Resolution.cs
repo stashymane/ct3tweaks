@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ct3tweaks.Objects
 {
-    public class Resolution
+    public class Resolution : IEquatable<Resolution>
     {
         public int w;
         public int h;
@@ -14,6 +10,11 @@ namespace ct3tweaks.Objects
         {
             this.w = w;
             this.h = h;
+        }
+
+        public bool Equals(Resolution other)
+        {
+            return this.w == other.w && this.h == other.h;
         }
     }
 }
