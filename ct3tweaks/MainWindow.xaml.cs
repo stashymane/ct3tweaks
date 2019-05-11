@@ -53,8 +53,6 @@ namespace ct3tweaks
 
         private void Present_ResolutionChange(Resolution past, Resolution present)
         {
-            if (resolutions.Contains(present))
-                ResolutionSlider.Value = resolutions.IndexOf(present);
             ResolutionInput.Text = present.w + "x" + present.h;
         }
 
@@ -97,9 +95,14 @@ namespace ct3tweaks
 
         private void LoadResolutions()
         {
-            resolutions.Add(new Resolution(1280, 720));
-            resolutions.Add(new Resolution(1920, 1080));
-            ResolutionSlider.Maximum = resolutions.Count - 1;
+            resolutions = ResolutionGetter.GetResolutions();
+            ResolutionPicker.Items.Clear();
+            foreach (Resolution r in resolutions)
+            {
+                string res = r.w + "x" + r.h;
+                if (!ResolutionPicker.Items.Contains(res))
+                    ResolutionPicker.Items.Add(res);
+            }
         }
 
         private void LoadProfile()
@@ -164,12 +167,6 @@ namespace ct3tweaks
         {
             if (FramerateSlider.IsMouseCaptured || FramerateSlider.IsFocused)
                 ProfileManager.CurrentProfile.Framerate = (int) FramerateSlider.Value;
-        }
-
-        private void ResolutionSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (ResolutionSlider.IsMouseCaptured || ResolutionSlider.IsFocused)
-                ProfileManager.CurrentProfile.Resolution = resolutions[(int) ResolutionSlider.Value];
         }
 
         private void FovSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
