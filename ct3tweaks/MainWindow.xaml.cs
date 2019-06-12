@@ -16,8 +16,8 @@ namespace ct3tweaks
         public MainWindow()
         {
             InitializeComponent();
-            ProfileManager.ProfileChange += ProfileManager_ProfileChange;
-            ProfileManager.DirectoryChange += ProfileManager_DirectoryChange;
+            //ProfileManager.ProfileChange += ProfileManager_ProfileChange;
+            //ProfileManager.DirectoryChange += ProfileManager_DirectoryChange;
             LoadDirectory();
             LoadResolutions();
             LoadProfile();

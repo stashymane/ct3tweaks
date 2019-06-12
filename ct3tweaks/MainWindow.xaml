@@ -1,4 +1,4 @@
-<Window x:Class="ct3tweaks.MainWindow"
+﻿<Window x:Class="ct3tweaks.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -50,10 +50,12 @@
             <TextBlock HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Framerate" VerticalAlignment="Center" Grid.Row="2"/>
             <Slider x:Name="FovSlider" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" ValueChanged="FovSlider_ValueChanged" Minimum="10" Maximum="180" TickFrequency="5" Value="80" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Grid.Row="1"/>
             <Slider x:Name="FramerateSlider" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" ValueChanged="FramerateSlider_ValueChanged" Minimum="30" Maximum="60" TickPlacement="BottomRight" TickFrequency="30" Value="30" IsSnapToTickEnabled="True" Grid.Row="2"/>
-            <TextBox x:Name="ResolutionInput" Grid.Column="2" Margin="0" Text="Resolution" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="ResolutionInput" Grid.Column="2" Margin="0" Text="{Binding ElementName = ResolutionPicker, Path = SelectedItem}" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20"/>
             <TextBox x:Name="FOVInput" Grid.Column="2" Text="FOV" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20" Grid.Row="1"/>
             <TextBox x:Name="FramerateInput" Grid.Column="2" Text="FPS" FontWeight="SemiBold" MaxLines="1" TextAlignment="Center" FontSize="20" Grid.Row="2"/>
             <ComboBox x:Name="ResolutionPicker" Grid.Column="1" Margin="0" SelectedIndex="0" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <ComboBoxItem Content="1920x1080"/>
+            </ComboBox>
         </Grid>
         <Grid Margin="0" Grid.Row="4">
             <Grid.ColumnDefinitions>
