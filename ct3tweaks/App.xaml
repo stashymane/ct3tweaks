@@ -64,7 +64,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="AppButtonInverted" TargetType="{x:Type Button}">
+        <Style x:Key="AppButtonInverted" TargetType="{x:Type ToggleButton}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource ButtonInverted.Static.Background}"/>
             <Setter Property="Foreground" Value="{StaticResource ButtonInverted.Static.Foreground}"/>
@@ -74,18 +74,19 @@
             <Setter Property="Padding" Value="1"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonInverted.MouseOver.Background}"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonInverted.Pressed.Background}"/>
+                                <Setter Property="Foreground" Value="{StaticResource ButtonInverted.Pressed.Foreground}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonInverted.Pressed.Background}"/>
                                 <Setter Property="Foreground" Value="{StaticResource ButtonInverted.Pressed.Foreground}"/>
                             </Trigger>

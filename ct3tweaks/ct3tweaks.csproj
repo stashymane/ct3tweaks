@@ -196,14 +196,6 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\briefcase-solid.svg" />
-    <Resource Include="Icons\folder-solid.svg" />
-    <Resource Include="Icons\times-solid.svg" />
-    <Resource Include="Icons\tools-solid.svg" />
-    <Resource Include="Icons\window-maximize-solid.svg" />
-    <Resource Include="Icons\window-minimize-solid.svg" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.5.0.5\build\Fody.targets" Condition="Exists('..\packages\Fody.5.0.5\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

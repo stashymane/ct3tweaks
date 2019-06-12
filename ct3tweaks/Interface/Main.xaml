@@ -28,18 +28,18 @@
                 <fa:IconImage Icon="WindowMinimize" Margin="6,16,6,0" Foreground="{Binding Foreground, ElementName=MinButton}"/>
             </Button>
         </StackPanel>
-        <Button x:Name="LocationButton" Grid.Column="1" HorizontalAlignment="Left" Width="40" Click="MinButton_Click" Style="{DynamicResource AppButton}" Panel.ZIndex="1">
+        <Button x:Name="LocationButton" Grid.Column="1" HorizontalAlignment="Left" Width="40" Style="{DynamicResource AppButton}" Panel.ZIndex="1">
             <fa:IconImage Icon="Folder" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=LocationButton}"/>
         </Button>
         <Label Content="CT3Tweaks" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0" FontSize="18" FontWeight="Bold" TextOptions.TextFormattingMode="Display" Panel.ZIndex="-1"/>
-        <Border BorderBrush="Black" Margin="0" Grid.RowSpan="2" Background="Black"/>
+        <Border BorderBrush="Black" Margin="0" Grid.RowSpan="2" Background="Black" Panel.ZIndex="-1"/>
         <StackPanel Margin="0" Grid.Row="1" x:Name="Tabs">
-            <Button x:Name="TweaksTabButton" Grid.Row="1" VerticalAlignment="Top" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
+            <ToggleButton x:Name="TweaksTabButton" Grid.Row="1" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
                 <fa:IconImage Icon="Tools" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=TweaksTabButton}"/>
-            </Button>
-            <Button x:Name="ProfileTabButton" Grid.Row="1" VerticalAlignment="Top" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
+            </ToggleButton>
+            <ToggleButton x:Name="ProfileTabButton" Grid.Row="1" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
                 <fa:IconImage Icon="Briefcase" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=ProfileTabButton}"/>
-            </Button>
+            </ToggleButton>
         </StackPanel>
     </Grid>
 </Window>
