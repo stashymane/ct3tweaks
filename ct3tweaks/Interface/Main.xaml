@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ct3tweaks.Interface"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:objects="clr-namespace:ct3tweaks.Objects"
         mc:Ignorable="d"
         Title="CT3Tweaks" Height="400" Width="600" WindowStyle="None">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="Resolution" ObjectType="{x:Type objects:Resolution}">
+            <ObjectDataProvider.ConstructorParameters>
+                <system:Int16>1920</system:Int16>
+                <system:Int16>1080</system:Int16>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+        <system:Int16 x:Key="FPS">60</system:Int16>
+        <system:Int16 x:Key="FOV">90</system:Int16>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -19,26 +30,26 @@
         <Border x:Name="DragArea" Grid.ColumnSpan="2" MouseLeftButtonDown="DragArea_MouseLeftButtonDown" Background="Transparent"/>
         <StackPanel HorizontalAlignment="Right" Grid.Column="1" Panel.ZIndex="1" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button x:Name="CloseButton" Margin="0" Width="40" Click="CloseButton_Click" Style="{DynamicResource AppButton}">
-                <fa:IconImage Icon="Times" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=CloseButton}"/>
+                <fa:IconImage Icon="Times" Margin="0" Foreground="{Binding Foreground, ElementName=CloseButton}"/>
             </Button>
             <Button x:Name="MaxButton" Grid.Column="1" Margin="0" Width="40" Click="MaxButton_Click" Style="{DynamicResource AppButton}">
-                <fa:IconImage Icon="WindowMaximize" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=MaxButton}"/>
+                <fa:IconImage Icon="WindowMaximize" Margin="0" Foreground="{Binding Foreground, ElementName=MaxButton}"/>
             </Button>
             <Button x:Name="MinButton" Grid.Column="1" Margin="0" Width="40" Click="MinButton_Click" Style="{DynamicResource AppButton}">
-                <fa:IconImage Icon="WindowMinimize" Margin="6,16,6,0" Foreground="{Binding Foreground, ElementName=MinButton}"/>
+                <fa:IconImage Icon="WindowMinimize" Margin="0,16,0,0" Foreground="{Binding Foreground, ElementName=MinButton}"/>
             </Button>
         </StackPanel>
         <Button x:Name="LocationButton" Grid.Column="1" HorizontalAlignment="Left" Width="40" Style="{DynamicResource AppButton}" Panel.ZIndex="1">
-            <fa:IconImage Icon="Folder" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=LocationButton}"/>
+            <fa:IconImage Icon="Folder" Margin="0" Foreground="{Binding Foreground, ElementName=LocationButton}"/>
         </Button>
         <Label Content="CT3Tweaks" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0" FontSize="18" FontWeight="Bold" TextOptions.TextFormattingMode="Display" Panel.ZIndex="-1"/>
-        <Border BorderBrush="Black" Margin="0" Grid.RowSpan="2" Background="Black" Panel.ZIndex="-1"/>
-        <StackPanel Margin="0" Grid.Row="1" x:Name="Tabs">
-            <ToggleButton x:Name="TweaksTabButton" Grid.Row="1" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
-                <fa:IconImage Icon="Tools" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=TweaksTabButton}"/>
+        <Border x:Name="border" BorderBrush="Black" Margin="0" Grid.RowSpan="2" Background="Black" Panel.ZIndex="-1"/>
+        <StackPanel Grid.Row="1" x:Name="Sidebar">
+            <ToggleButton x:Name="TweaksTabButton" Grid.Column="1" HorizontalAlignment="Left" Width="40" Style="{DynamicResource AppButtonBlack}" Panel.ZIndex="1" IsChecked="True" Click="TweaksTabButton_Click">
+                <fa:IconImage Icon="Tools" Foreground="{Binding Foreground, ElementName=TweaksTabButton}"/>
             </ToggleButton>
-            <ToggleButton x:Name="ProfileTabButton" Grid.Row="1" Height="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Style="{DynamicResource AppButtonInverted}">
-                <fa:IconImage Icon="Briefcase" Margin="6,6,6,6" Foreground="{Binding Foreground, ElementName=ProfileTabButton}"/>
+            <ToggleButton x:Name="ProfilesTabButton" Grid.Column="1" HorizontalAlignment="Left" Width="40" Style="{DynamicResource AppButtonBlack}" Panel.ZIndex="1" Click="ProfilesTabButton_Click">
+                <fa:IconImage Icon="Briefcase" Foreground="{Binding Foreground, ElementName=ProfilesTabButton}"/>
             </ToggleButton>
         </StackPanel>
     </Grid>

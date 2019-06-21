@@ -116,6 +116,13 @@
     <Compile Include="Interface\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\Tabs\AppTabs.cs" />
+    <Compile Include="Interface\Tabs\ProfileTab.xaml.cs">
+      <DependentUpon>ProfileTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Tabs\TweaksTab.xaml.cs">
+      <DependentUpon>TweaksTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Profile.cs" />
     <Compile Include="Objects\Resolution.cs" />
     <Compile Include="ProfileManager.cs" />
@@ -131,6 +138,14 @@
     <Compile Include="TweakLib.cs" />
     <Compile Include="Updater.cs" />
     <Page Include="Interface\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\Tabs\ProfileTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interface\Tabs\TweaksTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

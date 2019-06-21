@@ -6,6 +6,7 @@ namespace ct3tweaks.Objects
     {
         public int w;
         public int h;
+
         public Resolution(int w, int h)
         {
             this.w = w;
