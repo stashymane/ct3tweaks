@@ -1,0 +1,8 @@
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\bin\Debug\netcoreapp3.1\CT3Tweaks.Lib.deps.json
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\bin\Debug\netcoreapp3.1\CT3Tweaks.Lib.dll
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\bin\Debug\netcoreapp3.1\CT3Tweaks.Lib.pdb
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\obj\Debug\netcoreapp3.1\CT3Tweaks.Lib.csprojAssemblyReference.cache
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\obj\Debug\netcoreapp3.1\CT3Tweaks.Lib.AssemblyInfoInputs.cache
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\obj\Debug\netcoreapp3.1\CT3Tweaks.Lib.AssemblyInfo.cs
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\obj\Debug\netcoreapp3.1\CT3Tweaks.Lib.dll
+D:\Projects\C#\CT3Tweaks\CT3Tweaks.Lib\obj\Debug\netcoreapp3.1\CT3Tweaks.Lib.pdb

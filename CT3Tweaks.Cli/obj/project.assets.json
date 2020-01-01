@@ -1,0 +1,92 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CT3Tweaks.Lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CT3Tweaks.Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CT3Tweaks.Lib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CT3Tweaks.Lib/1.0.0": {
+      "type": "project",
+      "path": "../CT3Tweaks.Lib/CT3Tweaks.Lib.csproj",
+      "msbuildProject": "../CT3Tweaks.Lib/CT3Tweaks.Lib.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "CT3Tweaks.Lib >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\aesth\\.nuget\\packages\\": {},
+    "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Cli\\CT3Tweaks.Cli.csproj",
+      "projectName": "CT3Tweaks.Cli",
+      "projectPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Cli\\CT3Tweaks.Cli.csproj",
+      "packagesPath": "C:\\Users\\aesth\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Cli\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\aesth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj": {
+              "projectPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

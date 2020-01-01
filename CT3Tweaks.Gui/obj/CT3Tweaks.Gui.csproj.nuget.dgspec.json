@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Gui\\CT3Tweaks.Gui.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Gui\\CT3Tweaks.Gui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Gui\\CT3Tweaks.Gui.csproj",
+        "projectName": "CT3Tweaks.Gui",
+        "projectPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Gui\\CT3Tweaks.Gui.csproj",
+        "packagesPath": "C:\\Users\\aesth\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Gui\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aesth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj": {
+                "projectPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[0.9.0, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[0.9.0, )"
+            },
+            "Avalonia.ReactiveUI": {
+              "target": "Package",
+              "version": "[0.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj",
+        "projectName": "CT3Tweaks.Lib",
+        "projectPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\CT3Tweaks.Lib.csproj",
+        "packagesPath": "C:\\Users\\aesth\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\C#\\CT3Tweaks\\CT3Tweaks.Lib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aesth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
