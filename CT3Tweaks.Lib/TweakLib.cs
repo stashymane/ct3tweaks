@@ -26,18 +26,18 @@ namespace CT3Tweaks.Lib
                 Backup();
 
                 var aspect = (float) value.w / value.h;
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write);
+                using var w = new BinaryWriter(File.OpenWrite(Path));
 
-                stream.Position = ResBytes[0];
-                stream.Write(BitConverter.GetBytes(value.w), 0, 2);
+                w.Seek(ResBytes[0], SeekOrigin.Begin);
+                w.Write(BitConverter.GetBytes(value.w), 0, 2);
 
-                stream.Position = ResBytes[1];
-                stream.Write(BitConverter.GetBytes(value.h), 0, 2);
+                w.Seek(ResBytes[1], SeekOrigin.Begin);
+                w.Write(BitConverter.GetBytes(value.h), 0, 2);
 
                 foreach (var b in AspectBytes)
                 {
-                    stream.Position = b;
-                    stream.Write(BitConverter.GetBytes(aspect), 0, 4);
+                    w.Seek(b, SeekOrigin.Begin);
+                    w.Write(BitConverter.GetBytes(aspect), 0, 4);
                 }
             }
         }
@@ -48,9 +48,9 @@ namespace CT3Tweaks.Lib
             set
             {
                 Backup();
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write)
-                    {Position = FovByte};
-                stream.Write(BitConverter.GetBytes(value), 0, 4);
+                using var w = new BinaryWriter(File.OpenWrite(Path));
+                w.Seek(FovByte, SeekOrigin.Begin);
+                w.Write(BitConverter.GetBytes(value), 0, 4);
             }
         }
 
@@ -60,9 +60,9 @@ namespace CT3Tweaks.Lib
             set
             {
                 Backup();
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write)
-                    {Position = FpsByte};
-                stream.Write(BitConverter.GetBytes(value), 0, 1);
+                using var w = new BinaryWriter(File.OpenWrite(Path));
+                w.Seek(FpsByte, SeekOrigin.Begin);
+                w.Write(BitConverter.GetBytes(value), 0, 1);
             }
         }
 
