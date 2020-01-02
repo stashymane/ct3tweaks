@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Security.Cryptography;
 using CT3Tweaks.Lib;
 using NUnit.Framework;
 

@@ -17,10 +17,8 @@ namespace CT3Tweaks.Lib
             Path = path;
         }
 
-        //TODO get variables from bin
         public Resolution Resolution
         {
-            //get => new Resolution(640, 480);
             get
             {
                 using var r = new BinaryReader(File.OpenRead(Path));
