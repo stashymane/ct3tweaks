@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace CT3Tweaks.Lib
@@ -85,7 +85,7 @@ namespace CT3Tweaks.Lib
 
         public void Backup()
         {
-            Backup(Path.Replace(".exe", ".original.exe"));
+            Backup(Path + ".backup");
         }
 
         public void Backup(string backupPath)
@@ -96,7 +96,7 @@ namespace CT3Tweaks.Lib
 
         public void Restore()
         {
-            Restore(Path.Replace(".exe", ".original.exe"));
+            Restore(Path + ".backup");
         }
 
         public void Restore(string backupPath)
