@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace CT3Tweaks.Lib
@@ -104,6 +104,11 @@ namespace CT3Tweaks.Lib
             if (File.Exists(Path))
                 File.Delete(Path);
             File.Copy(backupPath, Path);
+        }
+
+        public void ResetDisplayMode()
+        {
+            ResetDisplayMode(System.IO.Path.GetDirectoryName(Path) + @"\TAXI3.CFG");
         }
         
         public static void ResetDisplayMode(string configPath)
