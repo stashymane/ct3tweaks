@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace CT3Tweaks.Lib
@@ -94,5 +94,21 @@ namespace CT3Tweaks.Lib
             using var stream = new FileStream(configPath, FileMode.Open, FileAccess.ReadWrite) {Position = 00};
             stream.WriteByte(0x01);
         }
+    }
+
+    public struct Resolution : IEquatable<Resolution>
+    {
+        public uint w;
+        public uint h;
+
+        public Resolution(uint w, uint h)
+        {
+            this.w = w;
+            this.h = h;
+        }
+
+        public bool Equals(Resolution other) => w == other.w && h == other.h;
+
+        public override string ToString() => w + "x" + h;
     }
 }
