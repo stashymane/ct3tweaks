@@ -26,7 +26,7 @@ namespace CT3Tweaks.Lib
                 Backup();
 
                 var aspect = (float) value.w / value.h;
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.ReadWrite);
+                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write);
 
                 stream.Position = ResBytes[0];
                 stream.Write(BitConverter.GetBytes(value.w), 0, 2);
@@ -48,7 +48,7 @@ namespace CT3Tweaks.Lib
             set
             {
                 Backup();
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.ReadWrite)
+                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write)
                     {Position = FovByte};
                 stream.Write(BitConverter.GetBytes(value), 0, 4);
             }
@@ -60,7 +60,7 @@ namespace CT3Tweaks.Lib
             set
             {
                 Backup();
-                using var stream = new FileStream(Path, FileMode.Open, FileAccess.ReadWrite)
+                using var stream = new FileStream(Path, FileMode.Open, FileAccess.Write)
                     {Position = FpsByte};
                 stream.Write(BitConverter.GetBytes(value), 0, 1);
             }
