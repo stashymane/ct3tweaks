@@ -5,7 +5,7 @@ custom resolutions, higher framerate and higher field of view.
 ## Roadmap
 ### 1.0
 * ✔ Finalize library
-* ❌ Command-line functionality
+* ✔ Command-line functionality
 * ❌ Graphical interface
 
 ## Texture/asset modification
