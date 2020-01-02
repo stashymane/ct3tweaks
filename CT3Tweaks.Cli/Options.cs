@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,7 +12,7 @@ namespace CT3Tweaks.Cli
         public string Path { get; set; }
 
         [Option('r', "resolution", Separator = 'x', Min = 2, Max = 2, HelpText = "Changes resolution (in pixels separated by an 'x').")]
-        public IEnumerable<int> Resolution { get; set; }
+        public IEnumerable<uint> Resolution { get; set; }
 
         [Option('f', "fps", HelpText = "Changes game framerate.")]
         public int Fps { get; set; }
