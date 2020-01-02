@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using CommandLine;
@@ -43,7 +43,18 @@ namespace CT3Tweaks.Cli
 
                 if (options.ResetDisplayMode)
                 {
-                    lib.ResetDisplayMode();
+                    try
+                    {
+                        if (options.ConfigPath == string.Empty)
+                            lib.ResetDisplayMode();
+                        else
+                            TweakLib.ResetDisplayMode(options.ConfigPath);
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        Console.Out.WriteLine(e.Message);
+                    }
+
                     Verbose("Reset display mode");
                 }
 
