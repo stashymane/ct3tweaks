@@ -54,7 +54,7 @@ namespace CT3Tweaks.Lib
             }
         }
 
-        public int Fps
+        public byte Fps
         {
             get => 30;
             set

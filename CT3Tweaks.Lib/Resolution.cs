@@ -4,10 +4,10 @@ namespace CT3Tweaks.Lib
 {
     public struct Resolution : IEquatable<Resolution>
     {
-        public int w;
-        public int h;
+        public uint w;
+        public uint h;
 
-        public Resolution(int w, int h)
+        public Resolution(uint w, uint h)
         {
             this.w = w;
             this.h = h;
