@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 
 namespace CT3Tweaks.Lib
@@ -21,6 +21,15 @@ namespace CT3Tweaks.Lib
         public Resolution Resolution
         {
             //get => new Resolution(640, 480);
+            get
+            {
+                using var r = new BinaryReader(File.OpenRead(Path));
+                r.BaseStream.Position = ResBytes[0];
+                var w = r.ReadUInt32();
+                r.BaseStream.Position = ResBytes[1];
+                var h = r.ReadUInt32();
+                return new Resolution(w, h);
+            }
             set
             {
                 Backup();
@@ -44,7 +53,12 @@ namespace CT3Tweaks.Lib
         
         public float Fov
         {
-            get => 60f;
+            get
+            {
+                using var r = new BinaryReader(File.OpenRead(Path));
+                r.BaseStream.Position = FovByte;
+                return r.ReadSingle();
+            }
             set
             {
                 Backup();
@@ -56,7 +70,12 @@ namespace CT3Tweaks.Lib
 
         public byte Fps
         {
-            get => 30;
+            get
+            {
+                using var r = new BinaryReader(File.OpenRead(Path));
+                r.BaseStream.Position = FpsByte;
+                return r.ReadByte();
+            }
             set
             {
                 Backup();
