@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -31,5 +31,8 @@ namespace CT3Tweaks.Cli
 
         [Option(HelpText = "The path to the game's configuration file (TAXI3.CFG).")]
         public string ConfigPath { get; set; }
+
+        [Option(HelpText = "Display executable status after modification.", Default = false)]
+        public bool Status { get; set; }
     }
 }
