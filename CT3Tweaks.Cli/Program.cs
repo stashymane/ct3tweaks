@@ -1,13 +1,16 @@
 ﻿using System;
+using CommandLine;
 using CT3Tweaks.Lib;
 
 namespace CT3Tweaks.Cli
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var result = Parser.Default.ParseArguments<Options>(args);
+            result.WithParsed(options => { });
+            result.WithNotParsed(errors => { });
         }
     }
 }
