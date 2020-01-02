@@ -26,7 +26,7 @@ namespace CT3Tweaks.Cli
         [Option(HelpText = "Restores backed up game file.")]
         public bool Restore { get; set; }
 
-        [Option(Default = true, HelpText = "Resets display mode in the game's configuration file.")]
+        [Option(HelpText = "Resets display mode in the game's configuration file.")]
         public bool ResetDisplayMode { get; set; }
 
         [Option(HelpText = "The path to the game's configuration file (TAXI3.CFG).")]
@@ -34,5 +34,8 @@ namespace CT3Tweaks.Cli
 
         [Option(HelpText = "Display executable status after modification.", Default = false)]
         public bool Status { get; set; }
+
+        [Option(HelpText = "Enable verbose mode.", Default = false)]
+        public bool Verbose { get; set; }
     }
 }
