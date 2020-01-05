@@ -7,6 +7,7 @@ custom resolutions, higher framerate and higher field of view.
 * ✔ Finalize library
 * ✔ Command-line functionality
 * ❌ Graphical interface
+* ❌ Music modification (via ffmpeg)
 
 ## Texture/asset modification
 I am planning on implementing asset modding into CT3Tweaks, however
