@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace CT3Tweaks.Lib
 {
     public class TweakLib
     {
-        private static readonly int[] ResBytes = { 0x7A89, 0x7A93 };
-        private static readonly int[] AspectBytes = { 0x3176A, 0x6ADC9 };
-        private const int FovByte = 0x6ADCE;
-        private const int FpsByte = 0x7E4B;
+        private TweakProfile profile = TweakProfiles.Fairlight;
 
         public string ExePath;
 
@@ -22,9 +21,9 @@ namespace CT3Tweaks.Lib
             get
             {
                 using var r = new BinaryReader(File.OpenRead(ExePath));
-                r.BaseStream.Position = ResBytes[0];
+                r.BaseStream.Position = profile.Width.First();
                 var w = r.ReadUInt32();
-                r.BaseStream.Position = ResBytes[1];
+                r.BaseStream.Position = profile.Height.First();
                 var h = r.ReadUInt32();
                 return new Resolution(w, h);
             }
@@ -32,18 +31,23 @@ namespace CT3Tweaks.Lib
             {
                 Backup();
 
-                var aspect = (float) value.w / value.h;
+                var aspect = (float) value.Width / value.Height;
                 using var w = new BinaryWriter(File.OpenWrite(ExePath));
-
-                w.Seek(ResBytes[0], SeekOrigin.Begin);
-                w.Write(BitConverter.GetBytes(value.w), 0, 2);
-
-                w.Seek(ResBytes[1], SeekOrigin.Begin);
-                w.Write(BitConverter.GetBytes(value.h), 0, 2);
-
-                foreach (var b in AspectBytes)
+                foreach (var addr in profile.Width)
                 {
-                    w.Seek(b, SeekOrigin.Begin);
+                    w.Seek(addr, SeekOrigin.Begin);
+                    w.Write(BitConverter.GetBytes(value.Width), 0, 2);
+                }
+
+                foreach (var addr in profile.Height)
+                {
+                    w.Seek(addr, SeekOrigin.Begin);
+                    w.Write(BitConverter.GetBytes(value.Height), 0, 2);
+                }
+
+                foreach (var addr in profile.Aspect)
+                {
+                    w.Seek(addr, SeekOrigin.Begin);
                     w.Write(BitConverter.GetBytes(aspect), 0, 4);
                 }
             }
@@ -54,15 +58,19 @@ namespace CT3Tweaks.Lib
             get
             {
                 using var r = new BinaryReader(File.OpenRead(ExePath));
-                r.BaseStream.Position = FovByte;
+                r.BaseStream.Position = profile.Fov.First();
                 return r.ReadSingle();
             }
             set
             {
                 Backup();
+
                 using var w = new BinaryWriter(File.OpenWrite(ExePath));
-                w.Seek(FovByte, SeekOrigin.Begin);
-                w.Write(BitConverter.GetBytes(value), 0, 4);
+                foreach (var addr in profile.Fov)
+                {
+                    w.Seek(addr, SeekOrigin.Begin);
+                    w.Write(BitConverter.GetBytes(value), 0, 4);
+                }
             }
         }
 
@@ -71,15 +79,20 @@ namespace CT3Tweaks.Lib
             get
             {
                 using var r = new BinaryReader(File.OpenRead(ExePath));
-                r.BaseStream.Position = FpsByte;
+                r.BaseStream.Position = profile.Fps.First();
                 return r.ReadByte();
             }
             set
             {
                 Backup();
+
                 using var w = new BinaryWriter(File.OpenWrite(ExePath));
-                w.Seek(FpsByte, SeekOrigin.Begin);
-                w.Write(BitConverter.GetBytes(value), 0, 1);
+
+                foreach (var addr in profile.Fps)
+                {
+                    w.Seek(addr, SeekOrigin.Begin);
+                    w.Write(BitConverter.GetBytes(value), 0, 1);
+                }
             }
         }
 
@@ -108,7 +121,7 @@ namespace CT3Tweaks.Lib
 
         public void ResetDisplayMode()
         {
-            ResetDisplayMode(System.IO.Path.GetDirectoryName(ExePath) + @"\TAXI3.CFG");
+            ResetDisplayMode(Path.GetDirectoryName(ExePath) + @"\TAXI3.CFG");
         }
         
         public static void ResetDisplayMode(string configPath)
@@ -120,17 +133,46 @@ namespace CT3Tweaks.Lib
 
     public struct Resolution : IEquatable<Resolution>
     {
-        public uint w;
-        public uint h;
+        public uint Width;
+        public uint Height;
 
-        public Resolution(uint w, uint h)
+        public Resolution(uint width, uint height)
         {
-            this.w = w;
-            this.h = h;
+            this.Width = width;
+            this.Height = height;
         }
 
-        public bool Equals(Resolution other) => w == other.w && h == other.h;
+        public bool Equals(Resolution other) => Width == other.Width && Height == other.Height;
 
-        public override string ToString() => w + "x" + h;
+        public override string ToString() => Width + "x" + Height;
+    }
+
+    public struct TweakProfile
+    {
+        public IEnumerable<int> Width;
+        public IEnumerable<int> Height;
+        public IEnumerable<int> Aspect;
+        public IEnumerable<int> Fov;
+        public IEnumerable<int> Fps;
+
+        public TweakProfile(IEnumerable<int> width, IEnumerable<int> height, IEnumerable<int> aspect, IEnumerable<int> fov, IEnumerable<int> fps)
+        {
+            Width = width;
+            Height = height;
+            Aspect = aspect;
+            Fov = fov;
+            Fps = fps;
+        }
+    }
+
+    public static class TweakProfiles
+    {
+        public static TweakProfile Fairlight = new TweakProfile(
+            new[] { 0x7A89 },
+            new[] { 0x7A93 },
+            new[] { 0x3176A, 0x6ADC9 },
+            new[] { 0x6ADCE }, 
+            new[] { 0x7E4B }
+            );
     }
 }
