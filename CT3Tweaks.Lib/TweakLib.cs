@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -176,7 +177,7 @@ namespace CT3Tweaks.Lib
                 using var stream = File.OpenRead(path);
                 var hash = BitConverter.ToString(
                     md5.ComputeHash(stream)
-                    ).Replace("-", "").ToLowerInvariant();
+                ).Replace("-", "").ToLowerInvariant();
                 return hash switch
                 {
                     "76b991e486460599cf5f09e7b0902875" => Fairlight,
