@@ -180,17 +180,20 @@ namespace CT3Tweaks.Lib
                 return hash switch
                 {
                     "76b991e486460599cf5f09e7b0902875" => Fairlight,
+                    "15a1ea00012f0119c1affc43f6c07fc1" => Xplosiv,
                     _ => throw new ArgumentException("The md5sum provided does not match any supported executables."),
                 };
             }
         }
 
         public static TweakProfile Fairlight = new TweakProfile(
-            new[] { 0x7A89 },
-            new[] { 0x7A93 },
-            new[] { 0x3176A, 0x6ADC9 },
-            new[] { 0x6ADCE }, 
-            new[] { 0x7E4B }
-            );
+            new[] {0x7A89},
+            new[] {0x7A93},
+            new[] {0x3176A, 0x6ADC9},
+            new[] {0x6ADCE},
+            new[] {0x7E4B}
+        );
+
+        public static TweakProfile Xplosiv => Fairlight;
     }
 }
