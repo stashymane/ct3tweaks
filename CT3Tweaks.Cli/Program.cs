@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using CommandLine;
@@ -36,8 +36,10 @@ namespace CT3Tweaks.Cli
 
                 if (options.Resolution.Any())
                 {
-                    lib.Resolution = new Resolution(options.Resolution.First(), options.Resolution.Last());
-                    Verbose("Changed resolution to " + options.Resolution.ToString());
+                    var w = options.Resolution.First();
+                    var h = options.Resolution.Last();
+                    lib.Resolution = new Resolution(w, h);
+                    Verbose("Changed resolution to " + w + "x" + h);
                 }
 
                 if (options.Fps > 0)
