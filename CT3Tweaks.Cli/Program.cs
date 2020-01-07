@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using CommandLine;
@@ -21,7 +21,18 @@ namespace CT3Tweaks.Cli
                     Console.Out.WriteLine("File does not exist.");
                     return;
                 }
-                var lib = new TweakLib(options.Path);
+
+                TweakLib lib;
+
+                try
+                {
+                    lib = new TweakLib(options.Path);
+                }
+                catch
+                {
+                    Console.Out.WriteLine("Executable not supported or already modified.");
+                    return;
+                }
 
                 if (options.Resolution.Any())
                 {

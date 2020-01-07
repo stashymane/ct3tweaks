@@ -1,19 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace CT3Tweaks.Lib
 {
     public class TweakLib
     {
-        private TweakProfile profile = TweakProfiles.Fairlight;
+        private TweakProfile profile;
 
         public string ExePath;
 
         public TweakLib(string exePath)
         {
             ExePath = Path.GetFullPath(exePath);
+            profile = TweakProfiles.GetByChecksum(exePath);
         }
 
         public Resolution Resolution
@@ -167,6 +169,22 @@ namespace CT3Tweaks.Lib
 
     public static class TweakProfiles
     {
+        public static TweakProfile GetByChecksum(string path)
+        {
+            using (var md5 = MD5.Create())
+            {
+                using var stream = File.OpenRead(path);
+                var hash = BitConverter.ToString(
+                    md5.ComputeHash(stream)
+                    ).Replace("-", "").ToLowerInvariant();
+                return hash switch
+                {
+                    "76b991e486460599cf5f09e7b0902875" => Fairlight,
+                    _ => throw new ArgumentException("The md5sum provided does not match any supported executables."),
+                };
+            }
+        }
+
         public static TweakProfile Fairlight = new TweakProfile(
             new[] { 0x7A89 },
             new[] { 0x7A93 },
