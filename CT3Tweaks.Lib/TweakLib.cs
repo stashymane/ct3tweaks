@@ -19,7 +19,7 @@ namespace CT3Tweaks.Lib
             this.profile = profile;
         }
 
-        public TweakLib(string exePath) : this(exePath, TweakProfiles.GetByChecksum(exePath)) { }
+        public TweakLib(string exePath) : this(exePath, TweakProfile.GetByChecksum(exePath)) { }
 
         public Resolution Resolution
         {
@@ -168,10 +168,7 @@ namespace CT3Tweaks.Lib
             Fov = fov;
             Fps = fps;
         }
-    }
 
-    public static class TweakProfiles
-    {
         public static TweakProfile GetByChecksum(string path)
         {
             using (var md5 = MD5.Create())
@@ -190,11 +187,11 @@ namespace CT3Tweaks.Lib
         }
 
         public static TweakProfile Fairlight = new TweakProfile(
-            new[] {0x7A89},
-            new[] {0x7A93},
-            new[] {0x3176A, 0x6ADC9},
-            new[] {0x6ADCE},
-            new[] {0x7E4B}
+            new[] { 0x7A89 },
+            new[] { 0x7A93 },
+            new[] { 0x3176A, 0x6ADC9 },
+            new[] { 0x6ADCE },
+            new[] { 0x7E4B }
         );
 
         public static TweakProfile Xplosiv => Fairlight;
