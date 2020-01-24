@@ -17,7 +17,7 @@ namespace CT3Tweaks.LibTest
         {
             Dir = AppDomain.CurrentDomain.BaseDirectory;
             File.Copy(Dir + Source, Dir + Dest);
-            l = new TweakLib(Dir + Dest);
+            l = new TweakLib(Dir + Dest, TweakProfiles.Fairlight);
         }
 
         [Test]
