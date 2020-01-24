@@ -13,11 +13,13 @@ namespace CT3Tweaks.Lib
 
         public string ExePath;
 
-        public TweakLib(string exePath)
+        public TweakLib(string exePath, TweakProfile profile)
         {
             ExePath = Path.GetFullPath(exePath);
-            profile = TweakProfiles.GetByChecksum(exePath);
+            this.profile = profile;
         }
+
+        public TweakLib(string exePath) : this(exePath, TweakProfiles.GetByChecksum(exePath)) { }
 
         public Resolution Resolution
         {
