@@ -12,12 +12,16 @@ namespace CT3Tweaks.Lib
         private TweakProfile profile;
 
         public string ExePath;
+        public string BackupPath;
 
-        public TweakLib(string exePath, TweakProfile profile)
+        public TweakLib(string exePath, TweakProfile profile, string backupPath)
         {
             ExePath = Path.GetFullPath(exePath);
+            BackupPath = Path.GetFullPath(backupPath);
             this.profile = profile;
         }
+
+        public TweakLib(string exePath, TweakProfile profile) : this(exePath, profile, exePath + ".backup") { }
 
         public TweakLib(string exePath) : this(exePath, TweakProfile.GetByChecksum(exePath)) { }
 
@@ -103,25 +107,35 @@ namespace CT3Tweaks.Lib
 
         public void Backup()
         {
-            Backup(ExePath + ".backup");
+            Backup(BackupPath);
         }
 
         public void Backup(string backupPath)
         {
+            Backup(BackupPath, ExePath);
+        }
+
+        public static void Backup(string backupPath, string exePath)
+        {
             if (!File.Exists(backupPath))
-                File.Copy(ExePath, backupPath);
+                File.Copy(exePath, backupPath);
         }
 
         public void Restore()
         {
-            Restore(ExePath + ".backup");
+            Restore(BackupPath);
         }
 
         public void Restore(string backupPath)
         {
-            if (File.Exists(ExePath))
-                File.Delete(ExePath);
-            File.Copy(backupPath, ExePath);
+            Restore(backupPath, ExePath);
+        }
+
+        public static void Restore(string backupPath, string restorePath)
+        {
+            if (File.Exists(restorePath))
+                File.Delete(restorePath);
+            File.Copy(backupPath, restorePath);
         }
 
         public void ResetDisplayMode()
