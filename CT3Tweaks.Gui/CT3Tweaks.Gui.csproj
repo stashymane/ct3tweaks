@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Compile Update="**\*.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -15,22 +14,38 @@
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Remove="Assets\car.png" />
-    <AvaloniaResource Remove="Assets\ct3tweaks.ico" />
+    <AvaloniaResource Remove="Views\MusicTab.xaml" />
+    <AvaloniaResource Remove="Views\TweakTab.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\car.png" />
-    <None Remove="Assets\ct3tweaks.ico" />
+    <None Remove="Views\MusicTab.xaml" />
+    <None Remove="Views\TweakTab.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\car.png" />
-    <Content Include="Assets\ct3tweaks.ico" />
+    <EmbeddedResource Include="Assets\ct3tweaks.ico" />
+    <EmbeddedResource Include="Views\MusicTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.1" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.9.1" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.1" />
+    <PackageReference Include="Avalonia" Version="0.9.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.9.3" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.3" />
+    <PackageReference Include="NvAPIWrapper.Net" Version="0.7.0.57" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TweakTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CT3Tweaks.Lib\CT3Tweaks.Lib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MusicTab.xaml.cs">
+      <DependentUpon>MusicTab.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

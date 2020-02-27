@@ -1,17 +1,31 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:CT3Tweaks.Gui.Views"
         xmlns:vm="clr-namespace:CT3Tweaks.Gui.ViewModels;assembly=CT3Tweaks.Gui"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="350"
         x:Class="CT3Tweaks.Gui.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="CT3Tweaks.Gui">
+        Icon="/Assets/ct3tweaks.ico"
+        Title="CT3Tweaks.Gui"
+        MinWidth="500"
+        MinHeight="200"
+        Width="600"
+        Height="350">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  
+  <TabControl>
+    <TabItem>
+      <TabItem.Header><DrawingPresenter Drawing="{DynamicResource Ionicons.SettingsMD}" /></TabItem.Header>
+      <v:TweakTab/>
+    </TabItem>
+    <TabItem>
+      <TabItem.Header><DrawingPresenter Drawing="{DynamicResource Ionicons.MusicalNotesMD}" Classes="tabIcon"/></TabItem.Header>
+      <v:MusicTab/>
+    </TabItem>
+  </TabControl>
 
 </Window>

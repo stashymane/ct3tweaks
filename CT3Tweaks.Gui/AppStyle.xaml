@@ -1,0 +1,129 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:sys="clr-namespace:System;assembly=netstandard">
+  <Style>
+    <Style.Resources>
+      <sys:Double x:Key="TabSize">60</sys:Double>
+
+      <Color x:Key="ThemeAccentColor">#FFDAA000</Color>
+      <Color x:Key="ThemeAccentColor2">#99DAA000</Color>
+      <Color x:Key="ThemeAccentColor3">#66DAA000</Color>
+      <Color x:Key="ThemeAccentColor4">#33DAA000</Color>
+
+      <Color x:Key="ThemeBackgroundColor">#FF222222</Color>
+      <Color x:Key="ThemeBorderLowColor">#FFAAAAAA</Color>
+      <Color x:Key="ThemeBorderMidColor">#FF888888</Color>
+      <Color x:Key="ThemeBorderHighColor">#FF333333</Color>
+
+
+      <Color x:Key="ThemeControlLowColor">#FF868999</Color>
+      <Color x:Key="ThemeControlMidColor">#FF444444</Color>
+      <Color x:Key="ThemeControlMidHighColor">#FFC2C3C9</Color>
+      <Color x:Key="ThemeControlHighColor">#FF686868</Color>
+      <Color x:Key="ThemeControlVeryHighColor">#FF5B5B5B</Color>
+
+      <Color x:Key="ThemeControlHighlightLowColor">#FFF0F0F0</Color>
+      <Color x:Key="ThemeControlHighlightMidColor">#FFD0D0D0</Color>
+      <Color x:Key="ThemeControlHighlightHighColor">#FF808080</Color>
+      <Color x:Key="ThemeForegroundColor">#FFFFFFFF</Color>
+      <Color x:Key="ThemeForegroundLowColor">#FF808080</Color>
+
+      <Color x:Key="HighlightColor">#FF086F9E</Color>
+      <Color x:Key="HighlightForegroundColor">#FFFFFFFF</Color>
+      <Color x:Key="ErrorColor">#FFFF0000</Color>
+      <Color x:Key="ErrorLowColor">#10FF0000</Color>
+
+      <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{DynamicResource ThemeBackgroundColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeBorderLowBrush" Color="{DynamicResource ThemeBorderLowColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeBorderMidBrush" Color="{DynamicResource ThemeBorderMidColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="{DynamicResource ThemeBorderHighColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlLowBrush" Color="{DynamicResource ThemeControlLowColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlMidBrush" Color="{DynamicResource ThemeControlMidColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="{DynamicResource ThemeControlMidHighColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlHighBrush" Color="{DynamicResource ThemeControlHighColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="{DynamicResource ThemeControlVeryHighColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="{DynamicResource ThemeControlHighlightLowColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="{DynamicResource ThemeControlHighlightMidColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="{DynamicResource ThemeControlHighlightHighColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeForegroundBrush" Color="{DynamicResource ThemeForegroundColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="{DynamicResource ThemeForegroundLowColor}"></SolidColorBrush>
+
+      <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource HighlightColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="HighlightForegroundBrush" Color="{DynamicResource HighlightForegroundColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeAccentBrush" Color="{DynamicResource ThemeAccentColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeAccentBrush2" Color="{DynamicResource ThemeAccentColor2}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeAccentBrush3" Color="{DynamicResource ThemeAccentColor3}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"></SolidColorBrush>
+      <SolidColorBrush x:Key="ErrorLowBrush" Color="{DynamicResource ErrorLowColor}"></SolidColorBrush>
+
+      <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75"/>
+      <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75"/>
+      <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75"/>
+      <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75"/>
+      <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75"/>
+
+      <SolidColorBrush x:Key="ControlHighlightColor">#ff555555</SolidColorBrush>
+      <SolidColorBrush x:Key="ControlActiveColor">#ff222222</SolidColorBrush>
+      <SolidColorBrush x:Key="AltBackgroundColor">#ff333333</SolidColorBrush>
+
+      <Thickness x:Key="ThemeBorderThickness">1</Thickness>
+      <sys:Double x:Key="ThemeDisabledOpacity">0.5</sys:Double>
+
+      <sys:Double x:Key="FontSizeSmall">10</sys:Double>
+      <sys:Double x:Key="FontSizeNormal">12</sys:Double>
+      <sys:Double x:Key="FontSizeLarge">16</sys:Double>
+
+      <sys:Double x:Key="ScrollBarThickness">18</sys:Double>
+      <sys:Double x:Key="ScrollBarThumbThickness">8</sys:Double>
+    </Style.Resources>
+  </Style>
+  <Style Selector="Button">
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="FontWeight" Value="500"/>
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeControlMidBrush}"/>
+  </Style>
+  <Style Selector="Button /template/ ContentPresenter">
+    <Setter Property="CornerRadius" Value="5"/>
+  </Style>
+  <Style Selector="Button.muted">
+    <Setter Property="Background" Value="#00000000"/>
+    <Setter Property="BorderBrush" Value="#00000000"/>
+  </Style>
+  <Style Selector="Button:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource ControlHighlightColor}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlHighlightColor}"/>
+  </Style>
+  <Style Selector="Button:pressed  /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource ControlActiveColor}"/>
+  </Style>
+  <Style Selector="Button.md">
+    <Setter Property="Margin" Value="10"/>
+  </Style>
+  <Style Selector=".bottomBar Button">
+    <Setter Property="Margin" Value="5, 10"/>
+  </Style>
+  <Style Selector="TextBlock.heading">
+    <Setter Property="TextAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Grid.Column" Value="0"/>
+    <Setter Property="FontSize" Value="25"/>
+    <Setter Property="FontWeight" Value="400"/>
+  </Style>
+  <Style Selector="TabControl">
+    <Setter Property="TabStripPlacement" Value="Left"/>
+  </Style>
+  <Style Selector="TabControl[TabStripPlacement=Left]">
+    <Setter Property="Padding" Value="0 0 0 0"/>
+  </Style>
+  <Style Selector="TabControl WrapPanel">
+    <Setter Property="Width" Value="{DynamicResource TabSize}"/>
+    <Setter Property="Background" Value="{DynamicResource AltBackgroundColor}"/>
+  </Style>
+  <Style Selector="TabControl TabItem">
+    <Setter Property="Width" Value="{DynamicResource TabSize}"/>
+    <Setter Property="Height" Value="{DynamicResource TabSize}"/>
+    <Setter Property="Padding" Value="16"></Setter>
+  </Style>
+</Styles>
