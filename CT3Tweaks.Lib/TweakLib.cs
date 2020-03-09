@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
 namespace CT3Tweaks.Lib
@@ -21,11 +22,15 @@ namespace CT3Tweaks.Lib
             this.profile = profile;
         }
 
-        public TweakLib(string exePath, TweakProfile profile) : this(exePath, profile, exePath + ".backup") { }
+        public TweakLib(string exePath, TweakProfile profile) : this(exePath, profile, exePath + ".backup")
+        {
+        }
 
-        public TweakLib(string exePath) : this(exePath, TweakProfile.GetByChecksum(exePath)) { }
+        public TweakLib(string exePath) : this(exePath, TweakProfile.GetByChecksum(exePath))
+        {
+        }
 
-        public Resolution Resolution
+        public (uint Width, uint Height) Resolution
         {
             get
             {
@@ -34,7 +39,7 @@ namespace CT3Tweaks.Lib
                 var w = r.ReadUInt32();
                 r.BaseStream.Position = profile.Height.First();
                 var h = r.ReadUInt32();
-                return new Resolution(w, h);
+                return (w, h);
             }
             set
             {
@@ -61,7 +66,7 @@ namespace CT3Tweaks.Lib
                 }
             }
         }
-        
+
         public float Fov
         {
             get
@@ -142,28 +147,12 @@ namespace CT3Tweaks.Lib
         {
             ResetDisplayMode(Path.GetDirectoryName(ExePath) + @"\TAXI3.CFG");
         }
-        
+
         public static void ResetDisplayMode(string configPath)
         {
             using var stream = new FileStream(configPath, FileMode.Open, FileAccess.ReadWrite) {Position = 00};
             stream.WriteByte(0x01);
         }
-    }
-
-    public struct Resolution : IEquatable<Resolution>
-    {
-        public uint Width;
-        public uint Height;
-
-        public Resolution(uint width, uint height)
-        {
-            this.Width = width;
-            this.Height = height;
-        }
-
-        public bool Equals(Resolution other) => Width == other.Width && Height == other.Height;
-
-        public override string ToString() => Width + "x" + Height;
     }
 
     public struct TweakProfile

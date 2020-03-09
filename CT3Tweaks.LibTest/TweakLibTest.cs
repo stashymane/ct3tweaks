@@ -23,10 +23,10 @@ namespace CT3Tweaks.LibTest
         [Test]
         public void ResolutionTest()
         {
-            var defaultResolution = new Resolution(640, 480);
+            (uint Width, uint Height) defaultResolution = (640, 480);
             Assert.AreEqual(defaultResolution, l.Resolution);
 
-            var newResolution = new Resolution(1920, 1080);
+            (uint Width, uint Height) newResolution = (1920, 1080);
             l.Resolution = newResolution;
             Assert.AreEqual(newResolution, l.Resolution);
         }
