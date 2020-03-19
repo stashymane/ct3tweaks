@@ -17,14 +17,18 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
   
-  <TabControl>
+  <TabControl TabStripPlacement="Left">
     <TabItem>
-      <TabItem.Header><DrawingPresenter Drawing="{DynamicResource Ionicons.SettingsMD}" /></TabItem.Header>
+      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.HomeMD}" /></TabItem.Header>
       <v:TweakTab/>
     </TabItem>
     <TabItem>
-      <TabItem.Header><DrawingPresenter Drawing="{DynamicResource Ionicons.MusicalNotesMD}" Classes="tabIcon"/></TabItem.Header>
+      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.MusicalNotesMD}" Classes="tabIcon"/></TabItem.Header>
       <v:MusicTab/>
+    </TabItem>
+    <TabItem>
+      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.SettingsMD}" Classes="tabIcon"/></TabItem.Header>
+      <v:SettingsTab/>
     </TabItem>
   </TabControl>
 

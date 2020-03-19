@@ -9,27 +9,27 @@
     <vm:TweakViewModel/>
   </Design.DataContext>
   
-  <Grid RowDefinitions="65, *, 60" Margin="5, 5, 5, 0">
-    <Grid ColumnDefinitions="200, 2*">
-      <Button Classes="md" Grid.Column="0">Browse</Button>
-      <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="20, 0, 0, 0" FontSize="20">No file selected</TextBlock>
-    </Grid>
-    <ScrollViewer Grid.Row="1">
-      <Grid Classes="tweakList" ColumnDefinitions="200, *" RowDefinitions="60, 60, 60" x:Name="Content">
-        <TextBlock Classes="heading" Grid.Row="0">Resolution</TextBlock>
-        <DropDown Grid.Row="0" Grid.Column="1"></DropDown>
-
-        <TextBlock Classes="heading" Grid.Row="1">Framerate</TextBlock>
-        <DropDown Grid.Row="1" Grid.Column="1"></DropDown>
-
-        <TextBlock Classes="heading" Grid.Row="2">Field of View</TextBlock>
-        <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"></Slider>
-      </Grid>
+  <Grid RowDefinitions="*, 60">
+    <ScrollViewer Grid.Row="0">
+      <StackPanel Classes="tweaksList">
+        <Grid>
+          <TextBlock Classes="heading">Resolution</TextBlock>
+          <ComboBox/>
+        </Grid>
+        <Grid>
+          <TextBlock Classes="heading">Framerate</TextBlock>
+          <ComboBox/>
+        </Grid>
+        <Grid>
+          <TextBlock Classes="heading">Field of View</TextBlock>
+          <Slider VerticalAlignment="Center"/>
+        </Grid>
+      </StackPanel>
     </ScrollViewer>
-    <Grid Classes="bottomBar" ColumnDefinitions="140, *, 140, 140" Grid.Row="2">
+    <Grid Classes="bottomBar" ColumnDefinitions="140, *, 140, 140" Grid.Row="1">
       <Border Background="{DynamicResource AltBackgroundColor}" Grid.ColumnSpan="4" Margin="-5, 0, -5, 0"/>
       <Button Classes="muted md">Reset</Button>
-      <Button Classes="md"  Grid.Column="2">Optimize</Button>
+      <Button Classes="md" Grid.Column="2">Optimize</Button>
       <Button Classes="md" Grid.Column="3">Apply</Button>
     </Grid>
   </Grid>

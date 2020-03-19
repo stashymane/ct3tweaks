@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="**\*.xaml.cs">
@@ -15,11 +16,13 @@
   <ItemGroup>
     <AvaloniaResource Remove="Assets\car.png" />
     <AvaloniaResource Remove="Views\MusicTab.xaml" />
+    <AvaloniaResource Remove="Views\SettingsTab.xaml" />
     <AvaloniaResource Remove="Views\TweakTab.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\car.png" />
     <None Remove="Views\MusicTab.xaml" />
+    <None Remove="Views\SettingsTab.xaml" />
     <None Remove="Views\TweakTab.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +36,15 @@
     <PackageReference Include="Avalonia" Version="0.9.3" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.3" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.3" />
-    <PackageReference Include="NvAPIWrapper.Net" Version="0.7.0.57" />
+    <PackageReference Include="OpenTK" Version="4.0.0-pre2" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TweakTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SettingsTab.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
