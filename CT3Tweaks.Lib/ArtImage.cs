@@ -19,8 +19,7 @@ namespace CT3Tweaks.Lib
                 throw new InvalidDataException($"Magic bytes not found at offset {Offset}. Value found: {m}");
             Width = r.ReadUInt16();
             Height = r.ReadUInt16();
-            DataSize = r.ReadUInt16();
-            Unknown = r.ReadUInt16();
+            DataSize = r.ReadUInt32();
             CompressionType = r.ReadUInt16();
             DataOffset = r.BaseStream.Position;
             r.Dispose();
@@ -30,8 +29,7 @@ namespace CT3Tweaks.Lib
         public uint Offset;
         public ushort Width;
         public ushort Height;
-        public ushort DataSize;
-        public ushort Unknown;
+        public uint DataSize;
         public ushort CompressionType;
 
         public long DataOffset;
@@ -45,7 +43,7 @@ namespace CT3Tweaks.Lib
                 if (_imageData != null) return _imageData;
                 using var r = new BinaryReader(File.OpenRead(Package.FilePath));
                 r.BaseStream.Position = DataOffset;
-                _imageData = r.ReadBytes(DataSize);
+                _imageData = r.ReadBytes((int)DataSize);
                 r.Dispose();
                 return _imageData;
             }
