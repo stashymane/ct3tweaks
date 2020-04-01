@@ -30,6 +30,7 @@ namespace CT3Tweaks.Cli
                 }
                 catch
                 {
+                    //TODO restore backup and test then
                     Console.Out.WriteLine("Executable not supported or already modified.");
                     return;
                 }
@@ -38,7 +39,7 @@ namespace CT3Tweaks.Cli
                 {
                     var w = options.Resolution.First();
                     var h = options.Resolution.Last();
-                    lib.Resolution = new Resolution(w, h);
+                    lib.Resolution = (w, h);
                     Verbose("Changed resolution to " + w + "x" + h);
                 }
 
@@ -98,7 +99,7 @@ namespace CT3Tweaks.Cli
             result.WithNotParsed(errors => { });
         }
 
-        static void Verbose(string msg)
+        private static void Verbose(string msg)
         {
             if (verboseMode)
                 Console.Out.WriteLine(msg);
