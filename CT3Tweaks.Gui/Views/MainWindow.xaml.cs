@@ -15,6 +15,9 @@ namespace CT3Tweaks.Gui.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+#if DEBUG
+            this.AttachDevTools();
+#endif
         }
 
         public static Window GetWindow()
