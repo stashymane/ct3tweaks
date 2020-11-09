@@ -1,3 +1,4 @@
+using System.IO;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -27,13 +28,24 @@ namespace CT3Tweaks.Gui.Views
             if (a == "")
                 return;
 
-            main.Path = a;
+            SetPath(a);
         }
 
         private void SubmitFolderPath(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
-                main.Path = (sender as TextBox)?.Text;
+                SetPath((sender as TextBox)?.Text);
+        }
+
+        private void SetPath(string value)
+        {
+            try
+            {
+                main.Path = value;
+            }
+            catch (FileNotFoundException e)
+            {
+            }
         }
     }
 }
