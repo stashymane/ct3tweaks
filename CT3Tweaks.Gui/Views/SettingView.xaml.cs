@@ -23,7 +23,7 @@ namespace CT3Tweaks.Gui.Views
         private async void BrowseButtonClick(object sender, RoutedEventArgs e)
         {
             var d = new OpenFolderDialog {Title = "Locate the Crazy Taxi 3 installation folder..."};
-            var a = await d.ShowAsync(VisualRoot as Window);
+            var a = await d.ShowAsync(MainWindow.GetWindow());
             if (a == "")
                 return;
 
