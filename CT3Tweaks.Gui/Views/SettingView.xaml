@@ -3,12 +3,18 @@
              xmlns:vm="clr-namespace:CT3Tweaks.Gui.ViewModels;assembly=CT3Tweaks.Gui"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:svg="clr-namespace:Svg.Skia.Avalonia;assembly=Svg.Skia.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CT3Tweaks.Gui.Views.SettingView">
 
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
+
+    <UserControl.Resources>
+        <svg:SvgImage x:Key="FolderOpenIcon" Source="/Assets/icons/folder-open.svg" />
+    </UserControl.Resources>
+
     <UserControl.Styles>
         <Style Selector="TextBlock.settingTitle">
             <Setter Property="FontSize" Value="18" />
@@ -24,7 +30,12 @@
     <StackPanel Orientation="Vertical" Margin="10 ">
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="Game folder" Classes="settingTitle" />
-            <Button Content="Browse..." Padding="5" Click="BrowseButtonClick" />
+            <Button Padding="5" Click="BrowseButtonClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{DynamicResource FolderOpenIcon}" Width="15" Height="15" />
+                    <TextBlock Text="Browse" VerticalAlignment="Center" FontWeight="Bold" Margin="5 0 0 0" />
+                </StackPanel>
+            </Button>
             <TextBox Name="FolderPath" DockPanel.Dock="Right" Text="{Binding Path, Mode=OneWay}" Classes="settingDesc"
                      KeyDown="SubmitFolderPath" />
         </DockPanel>

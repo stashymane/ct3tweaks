@@ -20,7 +20,6 @@
 
     <Window.Resources>
         <svg:SvgImage x:Key="ConstructIcon" Source="/Assets/icons/construct.svg" />
-        <svg:SvgImage x:Key="FolderOpenIcon" Source="/Assets/icons/folder-open.svg" />
         <svg:SvgImage x:Key="SettingsIcon" Source="/Assets/icons/settings.svg" />
         <svg:SvgImage x:Key="VolumeMediumIcon" Source="/Assets/icons/volume-medium.svg" />
         <svg:SvgImage x:Key="ImageIcon" Source="/Assets/icons/image.svg" />
