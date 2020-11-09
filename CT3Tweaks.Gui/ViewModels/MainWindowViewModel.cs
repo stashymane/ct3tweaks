@@ -10,7 +10,12 @@ namespace CT3Tweaks.Gui.ViewModels
         public string Path
         {
             get => _path;
-            set => this.RaiseAndSetIfChanged(ref _path, value);
+            set
+            {
+                if (!File.Exists(System.IO.Path.Combine(value, "ct3.exe")))
+                    throw new FileNotFoundException("CT3.exe was not found in this directory.");
+                this.RaiseAndSetIfChanged(ref _path, value);
+            }
         }
 
         public MainWindowViewModel()
