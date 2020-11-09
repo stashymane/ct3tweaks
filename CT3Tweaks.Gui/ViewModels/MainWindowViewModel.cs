@@ -25,7 +25,7 @@ namespace CT3Tweaks.Gui.ViewModels
             this.WhenAnyValue(x => x.Path).Subscribe(Console.WriteLine);
             try
             {
-                _path = Directory.GetCurrentDirectory();
+                Path = Directory.GetCurrentDirectory();
             }
             catch (FileNotFoundException)
             {
