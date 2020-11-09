@@ -1,8 +1,4 @@
-using System;
-using System.ComponentModel;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CT3Tweaks.Lib
 {
@@ -18,10 +14,8 @@ namespace CT3Tweaks.Lib
             var n = r.ReadUInt32();
             Images = new ArtImage[n];
             for (var i = 0; i < n; i++)
-            {
-                ArtImage img = new ArtImage(this, r.ReadUInt32());
-                Images[i] = img;
-            }
+                Images[i] = new ArtImage(this, r.ReadUInt32());
+
             r.Dispose();
         }
     }

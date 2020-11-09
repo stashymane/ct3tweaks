@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CT3Tweaks.Lib", "CT3Tweaks.Lib\CT3Tweaks.Lib.csproj", "{7F0ECEE6-5F29-4363-BD73-3E7D2A4F785E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CT3Tweaks.Gui", "CT3Tweaks.Gui\CT3Tweaks.Gui.csproj", "{4EB87A70-71D7-4DB7-8858-B60F13527B13}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CT3Tweaks.Cli", "CT3Tweaks.Cli\CT3Tweaks.Cli.csproj", "{603955FD-0502-45D4-8280-9520AFB2D861}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AECAB4F-20D9-4B16-B655-DCDF67DF84F2}"
@@ -14,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT3Tweaks.LibTest", "CT3Tweaks.LibTest\CT3Tweaks.LibTest.csproj", "{7BF0CB7F-C6CF-480C-8FB0-DA70AE0C4CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CT3Tweaks.LibTest", "CT3Tweaks.LibTest\CT3Tweaks.LibTest.csproj", "{7BF0CB7F-C6CF-480C-8FB0-DA70AE0C4CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT3Tweaks.Gui", "CT3Tweaks.Gui\CT3Tweaks.Gui.csproj", "{49F0230C-E682-489A-A478-92307E602D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +26,6 @@ Global
 		{7F0ECEE6-5F29-4363-BD73-3E7D2A4F785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F0ECEE6-5F29-4363-BD73-3E7D2A4F785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F0ECEE6-5F29-4363-BD73-3E7D2A4F785E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4EB87A70-71D7-4DB7-8858-B60F13527B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EB87A70-71D7-4DB7-8858-B60F13527B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EB87A70-71D7-4DB7-8858-B60F13527B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EB87A70-71D7-4DB7-8858-B60F13527B13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{603955FD-0502-45D4-8280-9520AFB2D861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{603955FD-0502-45D4-8280-9520AFB2D861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603955FD-0502-45D4-8280-9520AFB2D861}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +34,10 @@ Global
 		{7BF0CB7F-C6CF-480C-8FB0-DA70AE0C4CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BF0CB7F-C6CF-480C-8FB0-DA70AE0C4CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BF0CB7F-C6CF-480C-8FB0-DA70AE0C4CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F0230C-E682-489A-A478-92307E602D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F0230C-E682-489A-A478-92307E602D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F0230C-E682-489A-A478-92307E602D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F0230C-E682-489A-A478-92307E602D30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

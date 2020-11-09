@@ -1,7 +1,4 @@
-﻿using System;
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Logging.Serilog;
+﻿using Avalonia;
 using Avalonia.ReactiveUI;
 
 namespace CT3Tweaks.Gui
@@ -18,7 +15,7 @@ namespace CT3Tweaks.Gui
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToDebug()
+                .LogToTrace()
                 .UseReactiveUI();
     }
 }

@@ -1,35 +1,65 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:v="clr-namespace:CT3Tweaks.Gui.Views"
         xmlns:vm="clr-namespace:CT3Tweaks.Gui.ViewModels;assembly=CT3Tweaks.Gui"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="350"
+        xmlns:views="clr-namespace:CT3Tweaks.Gui.Views"
+        xmlns:svg="clr-namespace:Svg.Skia.Avalonia;assembly=Svg.Skia.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CT3Tweaks.Gui.Views.MainWindow"
-        Icon="/Assets/ct3tweaks.ico"
-        Title="CT3Tweaks.Gui"
-        MinWidth="500"
+        MinWidth="300"
         MinHeight="200"
         Width="600"
-        Height="350">
+        Height="400"
+        Icon="/Assets/ct3tweaks.ico"
+        Title="CT3Tweaks.Gui">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
-  
-  <TabControl TabStripPlacement="Left">
-    <TabItem>
-      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.HomeMD}" /></TabItem.Header>
-      <v:TweakTab/>
-    </TabItem>
-    <TabItem>
-      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.MusicalNotesMD}" Classes="tabIcon"/></TabItem.Header>
-      <v:MusicTab/>
-    </TabItem>
-    <TabItem>
-      <TabItem.Header><DrawingPresenter Width="40" Drawing="{StaticResource Ionicons.SettingsMD}" Classes="tabIcon"/></TabItem.Header>
-      <v:SettingsTab/>
-    </TabItem>
-  </TabControl>
+
+    <Window.Resources>
+        <svg:SvgImage x:Key="ConstructIcon" Source="/Assets/icons/construct.svg" />
+        <svg:SvgImage x:Key="FolderOpenIcon" Source="/Assets/icons/folder-open.svg" />
+        <svg:SvgImage x:Key="SettingsIcon" Source="/Assets/icons/settings.svg" />
+        <svg:SvgImage x:Key="VolumeMediumIcon" Source="/Assets/icons/volume-medium.svg" />
+        <svg:SvgImage x:Key="ImageIcon" Source="/Assets/icons/image.svg" />
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="Image.tabIcon">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Styles>
+
+    <TabControl TabStripPlacement="Left">
+        <TabItem>
+            <TabItem.Header>
+                <Image Source="{DynamicResource ConstructIcon}" Classes="tabIcon" />
+            </TabItem.Header>
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Text="Resolution" />
+            </DockPanel>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <Image Source="{DynamicResource ImageIcon}" Classes="tabIcon" />
+            </TabItem.Header>
+            <Grid />
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <Image Source="{DynamicResource VolumeMediumIcon}" Classes="tabIcon" />
+            </TabItem.Header>
+            <Grid />
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <Image Source="{DynamicResource SettingsIcon}" Classes="tabIcon" />
+            </TabItem.Header>
+            <views:SettingView />
+        </TabItem>
+    </TabControl>
 
 </Window>

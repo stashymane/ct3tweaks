@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:CT3Tweaks.Gui.ViewModels;assembly=CT3Tweaks.Gui"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CT3Tweaks.Gui.Views.SettingView">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="TextBlock.settingTitle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0 5 0 10" />
+        </Style>
+        <Style Selector="TextBlock.settingDesc">
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel Orientation="Vertical" Margin="10 ">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Game folder" Classes="settingTitle" />
+            <Button Content="Browse..." Padding="5" Click="BrowseButtonClick" />
+            <TextBox Name="FolderPath" DockPanel.Dock="Right" Text="{Binding Path, Mode=OneWay}" Classes="settingDesc"
+                     KeyDown="SubmitFolderPath" />
+        </DockPanel>
+    </StackPanel>
+
+</UserControl>
