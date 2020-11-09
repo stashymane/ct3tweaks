@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using ReactiveUI;
 
 namespace CT3Tweaks.Gui.ViewModels
@@ -22,6 +23,15 @@ namespace CT3Tweaks.Gui.ViewModels
         {
             MusicViewModel = new MusicViewModel();
             this.WhenAnyValue(x => x.Path).Subscribe(Console.WriteLine);
+            try
+            {
+                _path = Directory.GetCurrentDirectory();
+            }
+            catch (FileNotFoundException)
+            {
+            }
+
+            //TODO save/load path
         }
 
         public MusicViewModel MusicViewModel { get; }
