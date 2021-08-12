@@ -3,8 +3,7 @@ struct Image {
 	u16 width;
 	u16 height;
 	u32 size;
-	u16 unknown;
-	u16 compressionType;
+	u32 compressionType;
 	u16 data[width * height];
 };
 
