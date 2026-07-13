@@ -216,6 +216,39 @@ a {
 	}
 }
 
+.deprecation {
+	background-color: #000000;
+	border: 0.5em solid #ff0000;
+	color: #fff;
+	padding: 2em;
+	margin: 0 -2.5em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+
+	div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1em;
+	}
+
+	p, a {
+		font-size: 1.5em;
+		font-weight: bold;
+		text-align: center;
+		line-height: 1.2em;
+		margin: 0;
+	}
+
+	i {
+		padding: 0 0.25em;
+	}
+}
+
 h1, h2, h3, h4, h5 {
 	position: relative;
 	color: $text-highlight-color;
